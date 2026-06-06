@@ -1,155 +1,198 @@
 "use client";
 
-import { useState } from "react";
-import { colleges } from "../data/colleges";
-import CollegeCard from "../components/CollegeCard";
+import { colleges } from "@/data/colleges";
+import { useEffect } from "react";
 
-export default function Home() {
-const [search, setSearch] = useState("");
+export default function CollegePage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const college = colleges.find((c) => c.id === params.id);
 
-const filtered = colleges.filter(
-(college) =>
-college.name.toLowerCase().includes(search.toLowerCase()) ||
-college.location.toLowerCase().includes(search.toLowerCase())
-);
+  useEffect(() => {
+    if (typeof window !== "undefined" && college) {
+      localStorage.setItem("recentCollege", college.name);
+    }
+  }, [college]);
 
-return ( <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+  if (!college) {
+    return (
+      <div className="p-6 text-red-500 text-xl">
+        College not found
+      </div>
+    );
+  }
 
-```
-  {/* Hero Section */}
-  <section className="text-center py-16 px-6">
-    <h1 className="text-5xl font-extrabold mb-4">
-      🎓 Discover Your Dream College
-    </h1>
+  const saveCollege = () => {
+    if (typeof window === "undefined") return;
 
-    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-      Compare colleges, predict admissions, explore placements,
-      and make smarter education decisions.
-    </p>
+    const saved = JSON.parse(
+      localStorage.getItem("savedColleges") || "[]"
+    );
 
-    <div className="flex justify-center gap-4 mt-8 flex-wrap">
-      <button className="bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition">
-        Explore Colleges
-      </button>
+    if (!saved.find((c: any) => c.id === college.id)) {
+      saved.push(college);
 
-      <button className="border px-6 py-3 rounded-xl hover:bg-gray-100 transition">
-        Compare Colleges
-      </button>
-    </div>
-  </section>
+      localStorage.setItem(
+        "savedColleges",
+        JSON.stringify(saved)
+      );
 
-  {/* Stats */}
-  <section className="grid md:grid-cols-4 gap-6 px-6 mb-10">
-    <div className="bg-white rounded-2xl p-6 shadow">
-      <h2 className="text-3xl font-bold text-blue-600">
-        {colleges.length}
-      </h2>
-      <p>Total Colleges</p>
-    </div>
+      alert("College Saved Successfully!");
+    } else {
+      alert("College Already Saved");
+    }
+  };
 
-    <div className="bg-white rounded-2xl p-6 shadow">
-      <h2 className="text-3xl font-bold text-green-600">
-        95%
-      </h2>
-      <p>Placement Success</p>
-    </div>
+  const shareCollege = () => {
+    if (typeof window === "undefined") return;
 
-    <div className="bg-white rounded-2xl p-6 shadow">
-      <h2 className="text-3xl font-bold text-purple-600">
-        4.7
-      </h2>
-      <p>Average Rating</p>
-    </div>
+    navigator.clipboard.writeText(window.location.href);
+    alert("College link copied!");
+  };
 
-    <div className="bg-white rounded-2xl p-6 shadow">
-      <h2 className="text-3xl font-bold text-orange-600">
-        150+
-      </h2>
-      <p>Courses Available</p>
-    </div>
-  </section>
+  return (
+    <div className="p-6 max-w-6xl mx-auto">
 
-  {/* Search */}
-  <section className="px-6 mb-10">
-    <input
-      className="w-full border rounded-2xl p-4 shadow"
-      placeholder="🔍 Search by college or city..."
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-    />
-  </section>
+      {/* Header */}
+      <div className="flex justify-between items-center">
+        <h1 className="text-4xl font-bold">
+          {college.name}
+        </h1>
 
-  {/* Colleges */}
-  <section className="px-6">
-    <h2 className="text-3xl font-bold mb-6">
-      Top Colleges
-    </h2>
+        <div className="flex gap-3">
+          <button
+            onClick={saveCollege}
+            className="bg-blue-600 text-white px-4 py-2 rounded"
+          >
+            Save
+          </button>
 
-    <div className="grid md:grid-cols-3 gap-6">
-      {filtered.map((college) => (
-        <CollegeCard
-          key={college.id}
-          college={college}
-        />
-      ))}
-    </div>
-  </section>
+          <button
+            onClick={shareCollege}
+            className="bg-green-600 text-white px-4 py-2 rounded"
+          >
+            Share
+          </button>
+        </div>
+      </div>
 
-  {/* Why Choose Us */}
-  <section className="py-20 px-6">
-    <h2 className="text-4xl font-bold text-center mb-10">
-      Why Students Love Our Platform
-    </h2>
+      {/* Location */}
+      <p className="text-gray-600 mt-2">
+        📍 {college.location}
+      </p>
 
-    <div className="grid md:grid-cols-3 gap-6">
-      <div className="bg-white rounded-2xl shadow p-6">
-        <h3 className="font-bold text-xl mb-3">
-          🎯 Accurate Predictions
-        </h3>
+      {/* Overview */}
+      <div className="mt-6 border rounded-lg p-5 shadow">
+        <h2 className="text-2xl font-semibold mb-3">
+          Overview
+        </h2>
+        <p>{college.overview}</p>
+      </div>
+
+      {/* Statistics */}
+      <div className="grid md:grid-cols-4 gap-4 mt-6">
+        <div className="border rounded-lg p-4 shadow">
+          <h3 className="font-semibold">Fees</h3>
+          <p className="text-xl">₹{college.fees}</p>
+        </div>
+
+        <div className="border rounded-lg p-4 shadow">
+          <h3 className="font-semibold">Rating</h3>
+          <p className="text-xl">⭐ {college.rating}</p>
+        </div>
+
+        <div className="border rounded-lg p-4 shadow">
+          <h3 className="font-semibold">Placement Rate</h3>
+          <p className="text-xl">{college.placementRate}</p>
+        </div>
+
+        <div className="border rounded-lg p-4 shadow">
+          <h3 className="font-semibold">Highest Package</h3>
+          <p className="text-xl">{college.highestPackage}</p>
+        </div>
+      </div>
+
+      {/* Placement Details */}
+      <div className="mt-6 border rounded-lg p-5 shadow">
+        <h2 className="text-2xl font-semibold mb-3">
+          Placement Statistics
+        </h2>
+
         <p>
-          Find colleges based on rank, category,
-          and previous cutoffs.
+          Average Package:
+          <span className="font-bold ml-2">
+            {college.averagePackage}
+          </span>
+        </p>
+
+        <p className="mt-2">
+          Highest Package:
+          <span className="font-bold ml-2">
+            {college.highestPackage}
+          </span>
+        </p>
+
+        <p className="mt-2">
+          Placement Rate:
+          <span className="font-bold ml-2">
+            {college.placementRate}
+          </span>
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl shadow p-6">
-        <h3 className="font-bold text-xl mb-3">
-          📊 Smart Comparisons
-        </h3>
-        <p>
-          Compare placements, fees, ratings,
-          and campus facilities instantly.
-        </p>
+      {/* Courses */}
+      <div className="mt-6 border rounded-lg p-5 shadow">
+        <h2 className="text-2xl font-semibold mb-4">
+          Courses Offered
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-3">
+          {college.courses.map((course: string) => (
+            <div
+              key={course}
+              className="border rounded p-3"
+            >
+              {course}
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow p-6">
-        <h3 className="font-bold text-xl mb-3">
-          🚀 Career Insights
-        </h3>
-        <p>
-          Explore salary trends, recruiters,
-          and placement reports.
-        </p>
+      {/* Highlights */}
+      <div className="mt-6 border rounded-lg p-5 shadow">
+        <h2 className="text-2xl font-semibold mb-4">
+          Highlights
+        </h2>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Excellent Placement Opportunities</li>
+          <li>Modern Infrastructure</li>
+          <li>Industry Collaborations</li>
+          <li>Strong Alumni Network</li>
+          <li>Research & Innovation Labs</li>
+        </ul>
+      </div>
+
+      {/* Reviews */}
+      <div className="mt-6 border rounded-lg p-5 shadow">
+        <h2 className="text-2xl font-semibold mb-4">
+          Student Reviews
+        </h2>
+
+        <div className="border rounded p-3 mb-3">
+          ⭐⭐⭐⭐⭐ Great placements and faculty.
+        </div>
+
+        <div className="border rounded p-3 mb-3">
+          ⭐⭐⭐⭐ Good campus and facilities.
+        </div>
+
+        <div className="border rounded p-3">
+          ⭐⭐⭐⭐⭐ Excellent learning environment.
+        </div>
       </div>
     </div>
-  </section>
-
-  {/* Footer CTA */}
-  <section className="bg-blue-600 text-white text-center py-16 mt-16">
-    <h2 className="text-4xl font-bold mb-4">
-      Start Your College Journey Today
-    </h2>
-
-    <p className="mb-6">
-      Discover. Compare. Decide.
-    </p>
-
-    <button className="bg-white text-blue-600 px-8 py-3 rounded-xl font-bold hover:scale-105 transition">
-      Get Started
-    </button>
-  </section>
-</main>
-```
-
-);
+  );
 }
