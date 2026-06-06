@@ -150,10 +150,7 @@ export default function CollegePage({
 
         <div className="grid md:grid-cols-2 gap-3">
           {college.courses.map((course: string) => (
-            <div
-              key={course}
-              className="border rounded p-3"
-            >
+            <div key={course} className="border rounded p-3">
               {course}
             </div>
           ))}
