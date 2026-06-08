@@ -49,4 +49,27 @@ export default function ComparePage() {
       </div>
     </div>
   );
+  <main className="max-w-7xl mx-auto p-6">
+
+      <h1 className="text-5xl font-bold mb-8">
+        Compare Colleges
+      </h1>
+
+      <div className="bg-white p-8 rounded-xl shadow">
+
+        <p>
+          Select two colleges and compare:
+        </p>
+
+        <ul className="list-disc ml-8 mt-4">
+          <li>Fees</li>
+          <li>Placements</li>
+          <li>Rating</li>
+          <li>Courses</li>
+        </ul>
+
+      </div>
+
+    </main>
+
 }
