@@ -6,6 +6,13 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <h1 className="text-2xl font-bold">
+    College Discovery Platform
+  </h1>
+
+  <button className="px-4 py-2 border rounded">
+    Toggle Dark Mode
+  </button>
         <h1 className="font-bold text-2xl text-blue-600">
           CollegeFinder
         </h1>
