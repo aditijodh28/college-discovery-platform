@@ -22,7 +22,6 @@ A web application to help students explore and discover colleges easily based on
 - JavaScript / TypeScript
 - CSS / Tailwind (if used)
 
----
 
 ## 📸 Screenshots
 
