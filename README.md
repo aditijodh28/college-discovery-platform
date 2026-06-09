@@ -6,11 +6,13 @@ A web application to help students explore and discover colleges easily based on
 
 ## 🚀 Features
 
-- Search and filter colleges
-- View college details
-- User-friendly UI
-- Fast and responsive design
-- Built with modern web technologies
+## Features
+
+- Search colleges by name
+- Compare colleges
+- View placement statistics
+- Explore course information
+- Responsive design
 
 ---
 
