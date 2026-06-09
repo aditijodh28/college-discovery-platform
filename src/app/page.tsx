@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { colleges } from "../data/colleges";
 import CollegeCard from "../components/CollegeCard";
 
@@ -169,6 +170,43 @@ export default function Home() {
           Get Started
         </button>
       </section>
+    </main>
+  );
+
+
+ return (
+    <main>
+
+      <section className="text-center py-24">
+
+        <h1 className="text-6xl font-bold">
+          Discover Your Dream College
+        </h1>
+
+        <p className="mt-6 text-xl text-gray-600">
+          India's Smart College Discovery Platform
+        </p>
+
+        <div className="mt-10 flex justify-center gap-4">
+
+          <Link
+            href="/colleges"
+            className="bg-blue-600 text-white px-8 py-4 rounded-xl"
+          >
+            Explore Colleges
+          </Link>
+
+          <Link
+            href="/compare"
+            className="border border-blue-600 px-8 py-4 rounded-xl"
+          >
+            Compare Colleges
+          </Link>
+
+        </div>
+
+      </section>
+
     </main>
   );
 }

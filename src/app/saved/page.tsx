@@ -1,41 +1,32 @@
-"use client";
+import { getServerSession } from "next-auth";
+import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
 
-import { useEffect, useState } from "react";
+export default async function SavedPage() {
+  const session = await getServerSession();
 
-export default function SavedPage() {
-  const [saved, setSaved] = useState<any[]>([]);
+  if (!session) {
+    redirect("/");
+  }
 
-  useEffect(() => {
-    const data = JSON.parse(
-      localStorage.getItem("savedColleges") || "[]"
-    );
-
-    setSaved(data);
-  }, []);
+  const user = await prisma.user.findUnique({
+    where: { email: session.user?.email! },
+    include: { savedColleges: true },
+  });
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">
+      <h1 className="text-2xl font-bold">
         Saved Colleges
       </h1>
 
-      {saved.length === 0 && (
-        <p>No colleges saved yet.</p>
-      )}
-
-      {saved.map((college) => (
-        <div
-          key={college.id}
-          className="border p-4 rounded mb-4"
-        >
-          <h2 className="font-bold">
-            {college.name}
-          </h2>
-
-          <p>{college.location}</p>
-          <p>⭐ {college.rating}</p>
-        </div>
-      ))}
+      <ul className="mt-4">
+        {user?.savedColleges.map((c) => (
+          <li key={c.id}>
+            College ID: {c.collegeId}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
