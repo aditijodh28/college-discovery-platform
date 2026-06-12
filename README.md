@@ -29,10 +29,8 @@ A web application to help students explore and discover colleges easily based on
 Add screenshots below:
 
 ### Home Page
-![Home Page](./screenshots/home.png)
+![Home Page](./screenshot/home.png)
 
-### College Listing Page
-![College List](./screenshots/list.png)
 
 ---
 
