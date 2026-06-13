@@ -1,5 +1,4 @@
 # 🎓 College Discovery Platform
-
 A web application to help students explore and discover colleges easily based on preferences like course, location, and ranking.
 
 ---
@@ -35,6 +34,7 @@ Add screenshots below:
 ---
 
 ## 📂 Project Setup
+
 
 ```bash
 git clone https://github.com/aditijodh28/college-discovery-platform.git
