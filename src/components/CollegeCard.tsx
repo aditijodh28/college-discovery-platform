@@ -1,103 +1,33 @@
-"use client";
-
 import Link from "next/link";
 
 export default function CollegeCard({ college }: any) {
-  const saveCollege = () => {
-    const saved = JSON.parse(
-      localStorage.getItem("savedColleges") || "[]"
-    );
-
-    if (!saved.find((c: any) => c.id === college.id)) {
-      saved.push(college);
-
-      localStorage.setItem(
-        "savedColleges",
-        JSON.stringify(saved)
-      );
-
-      alert("College Saved Successfully!");
-    } else {
-      alert("Already Saved");
-    }
-  };
-
   return (
-    <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500 transition">
 
-      {/* Top Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 h-24 flex items-center justify-center">
-        <h2 className="text-white text-2xl font-bold text-center px-2">
-          {college.name}
-        </h2>
+      <h2 className="text-2xl font-bold mb-2">
+        {college.name}
+      </h2>
+
+      <p className="text-slate-400 mb-4">
+        📍 {college.location}
+      </p>
+
+      <div className="flex justify-between mb-4">
+        <span>⭐ {college.rating}</span>
+        <span>{college.placementRate}</span>
       </div>
 
-      <div className="p-5">
+      <p className="text-slate-400 text-sm mb-4">
+        {college.overview}
+      </p>
 
-        {/* Location */}
-        <p className="text-gray-500 mb-4">
-          📍 {college.location}
-        </p>
+      <Link
+        href={`/college/${college.id}`}
+        className="block text-center bg-blue-600 hover:bg-blue-700 py-3 rounded-xl"
+      >
+        View Details
+      </Link>
 
-        {/* Stats */}
-        <div className="space-y-2">
-
-          <div className="flex justify-between">
-            <span>Fees</span>
-            <span className="font-semibold text-blue-600">
-              ₹{college.fees}
-            </span>
-          </div>
-
-          <div className="flex justify-between">
-            <span>Rating</span>
-            <span className="font-semibold text-yellow-500">
-              ⭐ {college.rating}
-            </span>
-          </div>
-
-          {college.placementRate && (
-            <div className="flex justify-between">
-              <span>Placement</span>
-              <span className="font-semibold text-green-600">
-                {college.placementRate}
-              </span>
-            </div>
-          )}
-        </div>
-
-        {/* Progress Bar */}
-        <div className="mt-5">
-          <div className="flex justify-between text-sm mb-1">
-            <span>Placement Success</span>
-            <span>95%</span>
-          </div>
-
-          <div className="w-full bg-gray-200 rounded-full h-3">
-            <div className="bg-green-500 h-3 rounded-full w-[95%]"></div>
-          </div>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex gap-3 mt-6">
-
-          <Link
-            href={`/college/${college.id}`}
-            className="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl font-semibold transition"
-          >
-            View Details
-          </Link>
-
-          <button
-            onClick={saveCollege}
-            className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl font-semibold transition"
-          >
-            Save
-          </button>
-
-        </div>
-
-      </div>
     </div>
   );
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "COEP Tech",
+    "location": "Pune",
+    "state": "Maharashtra",
+    "fees": 120000,
+    "rating": 4.8,
+    "placementRate": "92%",
+    "averagePackage": "8.5 LPA",
+    "highestPackage": "32 LPA",
+    "courses": ["CSE", "IT", "Mechanical"]
+  },
+  {
+    "id": "2",
+    "name": "VNIT Nagpur",
+    "location": "Nagpur",
+    "state": "Maharashtra",
+    "fees": 140000,
+    "rating": 4.9,
+    "placementRate": "96%",
+    "averagePackage": "12 LPA",
+    "highestPackage": "65 LPA",
+    "courses": ["CSE", "ECE", "Mechanical"]
+  }
+]
