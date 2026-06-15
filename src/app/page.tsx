@@ -2,21 +2,31 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import colleges from "../data/colleges.json";
+import { colleges } from "@/data/colleges";
 import CollegeCard from "@/components/CollegeCard";
 
 export default function Home() {
 const [search, setSearch] = useState("");
 
 const filtered = colleges.filter(
-(college) =>
-college.name.toLowerCase().includes(search.toLowerCase()) ||
-college.location.toLowerCase().includes(search.toLowerCase())
+  (college) =>
+    college.name
+      .toLowerCase()
+      .includes(search.toLowerCase()) ||
+
+    college.location
+      .toLowerCase()
+      .includes(search.toLowerCase()) ||
+
+    college.courses.some((course) =>
+      course
+        .toLowerCase()
+        .includes(search.toLowerCase())
+    )
 );
 
 return ( <main className="min-h-screen bg-slate-950 text-white">
 
-```
   {/* Hero Section */}
   <section className="relative overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-r from-blue-700/20 via-purple-700/20 to-cyan-700/20 blur-3xl"></div>

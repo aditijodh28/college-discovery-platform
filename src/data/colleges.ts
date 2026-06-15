@@ -1,4 +1,4 @@
-[
+export const colleges = [
   {
     id: "1",
     name: "COEP Technological University",
@@ -49,7 +49,7 @@
 
   {
     id: "5",
-    name: "Government College of Engineering Amravati",
+    name: "Government College of Engineering",
     location: "Amravati",
     fees: 90000,
     rating: 4.4,
@@ -145,7 +145,7 @@
 
   {
     id: "13",
-    name: "Sardar Patel Institute of Technology",
+    name: "SPIT Mumbai",
     location: "Mumbai",
     fees: 180000,
     rating: 4.6,
@@ -177,5 +177,125 @@
     averagePackage: "10 LPA",
     highestPackage: "48 LPA",
     courses: ["Computer", "AI", "Data Science"],
-  }
-]
+  },
+
+  {
+    id: "16",
+    name: "Cummins College of Engineering",
+    location: "Pune",
+    fees: 180000,
+    rating: 4.5,
+    placementRate: "90%",
+    averagePackage: "8.5 LPA",
+    highestPackage: "31 LPA",
+    courses: ["Computer", "IT", "E&TC"],
+  },
+
+  {
+    id: "17",
+    name: "Sinhgad College of Engineering",
+    location: "Pune",
+    fees: 145000,
+    rating: 4.2,
+    placementRate: "82%",
+    averagePackage: "6.8 LPA",
+    highestPackage: "21 LPA",
+    courses: ["Computer", "IT", "Civil"],
+  },
+
+  {
+    id: "18",
+    name: "Bharati Vidyapeeth College of Engineering",
+    location: "Pune",
+    fees: 170000,
+    rating: 4.3,
+    placementRate: "85%",
+    averagePackage: "7.4 LPA",
+    highestPackage: "24 LPA",
+    courses: ["Computer", "IT", "Mechanical"],
+  },
+
+  {
+    id: "19",
+    name: "DJ Sanghvi College of Engineering",
+    location: "Mumbai",
+    fees: 195000,
+    rating: 4.6,
+    placementRate: "93%",
+    averagePackage: "10.5 LPA",
+    highestPackage: "46 LPA",
+    courses: ["Computer", "AI", "Data Science"],
+  },
+
+  {
+    id: "20",
+    name: "Fr. Conceicao Rodrigues College",
+    location: "Mumbai",
+    fees: 165000,
+    rating: 4.4,
+    placementRate: "88%",
+    averagePackage: "8.2 LPA",
+    highestPackage: "29 LPA",
+    courses: ["Computer", "IT", "Electronics"],
+  },
+
+  {
+    id: "21",
+    name: "YCCE",
+    location: "Nagpur",
+    fees: 160000,
+    rating: 4.3,
+    placementRate: "84%",
+    averagePackage: "7 LPA",
+    highestPackage: "25 LPA",
+    courses: ["Computer", "IT", "AI"],
+  },
+
+  {
+    id: "22",
+    name: "G H Raisoni College of Engineering",
+    location: "Nagpur",
+    fees: 155000,
+    rating: 4.2,
+    placementRate: "82%",
+    averagePackage: "6.8 LPA",
+    highestPackage: "23 LPA",
+    courses: ["Computer", "IT", "Data Science"],
+  },
+
+  {
+    id: "23",
+    name: "Prof. Ram Meghe College of Engineering",
+    location: "Amravati",
+    fees: 115000,
+    rating: 4.2,
+    placementRate: "80%",
+    averagePackage: "6.5 LPA",
+    highestPackage: "18 LPA",
+    courses: ["IT", "Computer", "AI"],
+  },
+
+  {
+    id: "24",
+    name: "Shri Sant Gajanan Maharaj College",
+    location: "Shegaon",
+    fees: 100000,
+    rating: 4.1,
+    placementRate: "78%",
+    averagePackage: "5.8 LPA",
+    highestPackage: "16 LPA",
+    courses: ["Computer", "Electrical", "Mechanical"],
+  },
+
+  {
+    id: "25",
+    name: "Government College of Engineering Karad",
+    location: "Karad",
+    fees: 95000,
+    rating: 4.4,
+    placementRate: "83%",
+    averagePackage: "7.2 LPA",
+    highestPackage: "20 LPA",
+    courses: ["Computer", "IT", "Civil"],
+  },
+];
