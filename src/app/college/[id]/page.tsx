@@ -1,195 +1,239 @@
-"use client";
-
 import { colleges } from "@/data/colleges";
-import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
-export default function CollegePage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const college = colleges.find((c) => c.id === params.id);
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && college) {
-      localStorage.setItem("recentCollege", college.name);
-    }
-  }, [college]);
+export default function CollegeDetails({ params }: Props) {
+  const college = colleges.find(
+    (item) => item.id === params.id
+  );
 
   if (!college) {
     return (
-      <div className="p-6 text-red-500 text-xl">
-        College not found
+      <div className="min-h-screen flex flex-col justify-center items-center">
+
+        <h1 className="text-4xl font-bold mb-4">
+          College Not Found
+        </h1>
+
+        <Link
+          href="/colleges"
+          className="bg-blue-600 text-white px-6 py-3 rounded-xl"
+        >
+          Back
+        </Link>
+
       </div>
     );
   }
 
-  const saveCollege = () => {
-    if (typeof window === "undefined") return;
-
-    const saved = JSON.parse(
-      localStorage.getItem("savedColleges") || "[]"
-    );
-
-    if (!saved.find((c: any) => c.id === college.id)) {
-      saved.push(college);
-
-      localStorage.setItem(
-        "savedColleges",
-        JSON.stringify(saved)
-      );
-
-      alert("College Saved Successfully!");
-    } else {
-      alert("College Already Saved");
-    }
-  };
-
-  const shareCollege = () => {
-    if (typeof window === "undefined") return;
-
-    navigator.clipboard.writeText(window.location.href);
-    alert("College link copied!");
-  };
-
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <main className="min-h-screen bg-slate-100">
 
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold">
-          {college.name}
-        </h1>
+      {/* Banner */}
 
-        <div className="flex gap-3">
-          <button
-            onClick={saveCollege}
-            className="bg-blue-600 text-white px-4 py-2 rounded"
-          >
-            Save
-          </button>
+      <div className="h-72 relative">
 
-          <button
-            onClick={shareCollege}
-            className="bg-green-600 text-white px-4 py-2 rounded"
-          >
-            Share
-          </button>
+        <Image
+          src="/colleges/default.jpg"
+          alt={college.name}
+          fill
+          className="object-cover"
+        />
+
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        <div className="absolute bottom-8 left-10 text-white">
+
+          <h1 className="text-5xl font-bold">
+            {college.name}
+          </h1>
+
+          <p className="text-2xl mt-3">
+            📍 {college.location}
+          </p>
+
         </div>
+
       </div>
 
-      {/* Location */}
-      <p className="text-gray-600 mt-2">
-        📍 {college.location}
-      </p>
+      {/* Details */}
 
-      {/* Overview */}
-      <div className="mt-6 border rounded-lg p-5 shadow">
-        <h2 className="text-2xl font-semibold mb-3">
-          Overview
-        </h2>
-        <p>{college.overview}</p>
-      </div>
+      <div className="max-w-7xl mx-auto px-6 py-12">
 
-      {/* Statistics */}
-      <div className="grid md:grid-cols-4 gap-4 mt-6">
-        <div className="border rounded-lg p-4 shadow">
-          <h3 className="font-semibold">Fees</h3>
-          <p className="text-xl">₹{college.fees}</p>
-        </div>
+        <div className="grid md:grid-cols-3 gap-8">
 
-        <div className="border rounded-lg p-4 shadow">
-          <h3 className="font-semibold">Rating</h3>
-          <p className="text-xl">⭐ {college.rating}</p>
-        </div>
+          {/* Left */}
 
-        <div className="border rounded-lg p-4 shadow">
-          <h3 className="font-semibold">Placement Rate</h3>
-          <p className="text-xl">{college.placementRate}</p>
-        </div>
+          <div className="md:col-span-2 bg-white rounded-3xl shadow-lg p-8">
 
-        <div className="border rounded-lg p-4 shadow">
-          <h3 className="font-semibold">Highest Package</h3>
-          <p className="text-xl">{college.highestPackage}</p>
-        </div>
-      </div>
+            <h2 className="text-3xl font-bold mb-8">
+              College Information
+            </h2>
 
-      {/* Placement Details */}
-      <div className="mt-6 border rounded-lg p-5 shadow">
-        <h2 className="text-2xl font-semibold mb-3">
-          Placement Statistics
-        </h2>
+            <div className="grid md:grid-cols-2 gap-6">
 
-        <p>
-          Average Package:
-          <span className="font-bold ml-2">
-            {college.averagePackage}
-          </span>
-        </p>
+              <div className="bg-blue-50 p-6 rounded-2xl">
 
-        <p className="mt-2">
-          Highest Package:
-          <span className="font-bold ml-2">
-            {college.highestPackage}
-          </span>
-        </p>
+                <h3 className="text-gray-500">
+                  ⭐ Rating
+                </h3>
 
-        <p className="mt-2">
-          Placement Rate:
-          <span className="font-bold ml-2">
-            {college.placementRate}
-          </span>
-        </p>
-      </div>
+                <p className="text-4xl font-bold text-blue-600">
+                  {college.rating}
+                </p>
 
-      {/* Courses */}
-      <div className="mt-6 border rounded-lg p-5 shadow">
-        <h2 className="text-2xl font-semibold mb-4">
-          Courses Offered
-        </h2>
+              </div>
 
-        <div className="grid md:grid-cols-2 gap-3">
-          {college.courses.map((course: string) => (
-            <div key={course} className="border rounded p-3">
-              {course}
+              <div className="bg-green-50 p-6 rounded-2xl">
+
+                <h3 className="text-gray-500">
+                  💰 Annual Fees
+                </h3>
+
+                <p className="text-4xl font-bold text-green-600">
+
+                  ₹{college.fees.toLocaleString()}
+
+                </p>
+
+              </div>
+
+              <div className="bg-purple-50 p-6 rounded-2xl">
+
+                <h3 className="text-gray-500">
+                  📊 Placement Rate
+                </h3>
+
+                <p className="text-4xl font-bold text-purple-600">
+
+                  {college.placementRate}
+
+                </p>
+
+              </div>
+
+              <div className="bg-orange-50 p-6 rounded-2xl">
+
+                <h3 className="text-gray-500">
+                  📈 Avg Package
+                </h3>
+
+                <p className="text-4xl font-bold text-orange-600">
+
+                  {college.averagePackage}
+
+                </p>
+
+              </div>
+
             </div>
-          ))}
+
+            <div className="mt-10">
+
+              <h2 className="text-3xl font-bold mb-6">
+
+                🚀 Highest Package
+
+              </h2>
+
+              <div className="bg-red-50 p-6 rounded-2xl">
+
+                <p className="text-5xl font-bold text-red-600">
+
+                  {college.highestPackage}
+
+                </p>
+
+              </div>
+
+            </div>
+
+            <div className="mt-12">
+
+              <h2 className="text-3xl font-bold mb-6">
+
+                📚 Courses
+
+              </h2>
+
+              <div className="flex flex-wrap gap-4">
+
+                {college.courses.map((course) => (
+
+                  <div
+                    key={course}
+                    className="bg-indigo-100 text-indigo-700 px-6 py-3 rounded-full font-semibold"
+                  >
+
+                    {course}
+
+                  </div>
+
+                ))}
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Right */}
+
+          <div className="bg-white rounded-3xl shadow-lg p-8 h-fit">
+
+            <h2 className="text-3xl font-bold mb-8">
+
+              🏢 Top Recruiters
+
+            </h2>
+
+            <div className="space-y-4">
+
+              {[
+                "Google",
+                "Microsoft",
+                "Amazon",
+                "TCS",
+                "Infosys",
+                "Accenture",
+                "Wipro",
+                "Capgemini",
+              ].map((company) => (
+
+                <div
+                  key={company}
+                  className="bg-slate-100 p-4 rounded-xl font-semibold"
+                >
+
+                  {company}
+
+                </div>
+
+              ))}
+
+            </div>
+
+            <Link
+              href="/colleges"
+              className="block mt-10 bg-blue-600 text-center text-white py-4 rounded-xl font-bold"
+            >
+
+              ← Back to Colleges
+
+            </Link>
+
+          </div>
+
         </div>
+
       </div>
 
-      {/* Highlights */}
-      <div className="mt-6 border rounded-lg p-5 shadow">
-        <h2 className="text-2xl font-semibold mb-4">
-          Highlights
-        </h2>
-
-        <ul className="list-disc pl-6 space-y-2">
-          <li>Excellent Placement Opportunities</li>
-          <li>Modern Infrastructure</li>
-          <li>Industry Collaborations</li>
-          <li>Strong Alumni Network</li>
-          <li>Research & Innovation Labs</li>
-        </ul>
-      </div>
-
-      {/* Reviews */}
-      <div className="mt-6 border rounded-lg p-5 shadow">
-        <h2 className="text-2xl font-semibold mb-4">
-          Student Reviews
-        </h2>
-
-        <div className="border rounded p-3 mb-3">
-          ⭐⭐⭐⭐⭐ Great placements and faculty.
-        </div>
-
-        <div className="border rounded p-3 mb-3">
-          ⭐⭐⭐⭐ Good campus and facilities.
-        </div>
-
-        <div className="border rounded p-3">
-          ⭐⭐⭐⭐⭐ Excellent learning environment.
-        </div>
-      </div>
-    </div>
+    </main>
   );
 }
