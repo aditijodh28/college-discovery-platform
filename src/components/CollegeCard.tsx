@@ -21,12 +21,14 @@ export default function CollegeCard({ college }: any) {
         {college.overview}
       </p>
 
-      <Link
-        href={`/college/${college.id}`}
-        className="block text-center bg-blue-600 hover:bg-blue-700 py-3 rounded-xl"
-      >
-        View Details
-      </Link>
+<Link
+  href={`/colleges/${college.id}`}
+  className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+>
+
+  View Details
+
+</Link>
 
     </div>
   );
