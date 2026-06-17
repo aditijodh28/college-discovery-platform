@@ -1,38 +1,128 @@
 "use client";
 
 import { useState } from "react";
+
 import { colleges } from "@/data/colleges";
+
 import CollegeCard from "@/components/CollegeCard";
 
+import FilterSidebar from "@/components/FilterSidebar";
+
 export default function CollegesPage() {
+
   const [search, setSearch] = useState("");
 
-  const filtered = colleges.filter((college) =>
-    college.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const [location, setLocation] = useState("");
+
+  const [rating, setRating] = useState("");
+
+  const [maxFees, setMaxFees] = useState("");
+
+  const [course, setCourse] = useState("");
+
+  const filtered = colleges.filter((college) => {
+
+    const matchesSearch =
+      college.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+    const matchesLocation =
+      !location ||
+      college.location === location;
+
+    const matchesRating =
+      !rating ||
+      college.rating >= Number(rating);
+
+    const matchesFees =
+      !maxFees ||
+      college.fees <= Number(maxFees);
+
+    const matchesCourse =
+      !course ||
+      college.courses.includes(course);
+
+    return (
+      matchesSearch &&
+      matchesLocation &&
+      matchesRating &&
+      matchesFees &&
+      matchesCourse
+    );
+  });
 
   return (
-    <main className="max-w-7xl mx-auto p-6 min-h-screen">
-      <h1 className="text-4xl font-bold mb-8 text-black dark:text-white">
-        Colleges
+
+    <main className="min-h-screen bg-slate-100 p-10">
+
+      <h1 className="text-5xl font-bold mb-10">
+
+        🎓 College Explorer
+
       </h1>
 
-      <input
-        type="text"
-        placeholder="Search College..."
-        className="w-full border border-gray-300 dark:border-gray-700 p-4 rounded-xl mb-8 bg-white dark:bg-gray-800 text-black dark:text-white"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <div className="grid lg:grid-cols-4 gap-10">
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {filtered.map((college) => (
-          <CollegeCard
-            key={college.id}
-            college={college}
+        <div>
+
+          <FilterSidebar
+
+            search={search}
+            setSearch={setSearch}
+
+            location={location}
+            setLocation={setLocation}
+
+            rating={rating}
+            setRating={setRating}
+
+            maxFees={maxFees}
+            setMaxFees={setMaxFees}
+
+            course={course}
+            setCourse={setCourse}
+
           />
-        ))}
+
+        </div>
+
+        <div className="lg:col-span-3">
+
+          <div className="flex justify-between mb-8">
+
+            <h2 className="text-3xl font-bold">
+
+              Colleges
+
+            </h2>
+
+            <p>
+
+              {filtered.length} Found
+
+            </p>
+
+          </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+            {filtered.map((college) => (
+
+              <CollegeCard
+                key={college.id}
+                college={college}
+              />
+
+            ))}
+
+          </div>
+
+        </div>
+
       </div>
+
     </main>
+
   );
 }
