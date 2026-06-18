@@ -3,77 +3,97 @@ import Link from "next/link";
 import Image from "next/image";
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-export default function CollegeDetails({ params }: Props) {
+export default async function CollegeDetails({
+  params,
+}: Props) {
+
+  const { id } = await params;
+
   const college = colleges.find(
-    (item) => item.id === params.id
+    (item) => item.id === id
   );
 
   if (!college) {
+
     return (
+
       <div className="min-h-screen flex flex-col justify-center items-center">
 
-        <h1 className="text-4xl font-bold mb-4">
-          College Not Found
+        <h1 className="text-4xl font-bold mb-6">
+
+          ❌ College Not Found
+
         </h1>
 
         <Link
           href="/colleges"
-          className="bg-blue-600 text-white px-6 py-3 rounded-xl"
+          className="bg-blue-600 text-white px-8 py-4 rounded-xl"
         >
-          Back
+
+          ← Back to Colleges
+
         </Link>
 
       </div>
+
     );
   }
 
   return (
+
     <main className="min-h-screen bg-slate-100">
 
       {/* Banner */}
 
-      <div className="h-72 relative">
+      <div className="relative h-80">
 
         <Image
           src="/colleges/default.jpg"
           alt={college.name}
           fill
+          priority
           className="object-cover"
         />
 
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
 
-        <div className="absolute bottom-8 left-10 text-white">
+        <div className="absolute bottom-10 left-10 text-white">
 
-          <h1 className="text-5xl font-bold">
+          <h1 className="text-5xl md:text-6xl font-bold">
+
             {college.name}
+
           </h1>
 
-          <p className="text-2xl mt-3">
+          <p className="text-2xl mt-4">
+
             📍 {college.location}
+
           </p>
 
         </div>
 
       </div>
 
-      {/* Details */}
+      {/* Dashboard */}
 
       <div className="max-w-7xl mx-auto px-6 py-12">
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
 
-          {/* Left */}
+          {/* Left Side */}
 
-          <div className="md:col-span-2 bg-white rounded-3xl shadow-lg p-8">
+          <div className="lg:col-span-2 bg-white rounded-3xl shadow-lg p-8">
 
-            <h2 className="text-3xl font-bold mb-8">
-              College Information
+            <h2 className="text-4xl font-bold mb-10">
+
+              🎓 College Information
+
             </h2>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -81,11 +101,15 @@ export default function CollegeDetails({ params }: Props) {
               <div className="bg-blue-50 p-6 rounded-2xl">
 
                 <h3 className="text-gray-500">
+
                   ⭐ Rating
+
                 </h3>
 
                 <p className="text-4xl font-bold text-blue-600">
+
                   {college.rating}
+
                 </p>
 
               </div>
@@ -93,7 +117,9 @@ export default function CollegeDetails({ params }: Props) {
               <div className="bg-green-50 p-6 rounded-2xl">
 
                 <h3 className="text-gray-500">
+
                   💰 Annual Fees
+
                 </h3>
 
                 <p className="text-4xl font-bold text-green-600">
@@ -107,7 +133,9 @@ export default function CollegeDetails({ params }: Props) {
               <div className="bg-purple-50 p-6 rounded-2xl">
 
                 <h3 className="text-gray-500">
+
                   📊 Placement Rate
+
                 </h3>
 
                 <p className="text-4xl font-bold text-purple-600">
@@ -121,7 +149,9 @@ export default function CollegeDetails({ params }: Props) {
               <div className="bg-orange-50 p-6 rounded-2xl">
 
                 <h3 className="text-gray-500">
+
                   📈 Avg Package
+
                 </h3>
 
                 <p className="text-4xl font-bold text-orange-600">
@@ -133,6 +163,8 @@ export default function CollegeDetails({ params }: Props) {
               </div>
 
             </div>
+
+            {/* Highest Package */}
 
             <div className="mt-10">
 
@@ -154,11 +186,13 @@ export default function CollegeDetails({ params }: Props) {
 
             </div>
 
+            {/* Courses */}
+
             <div className="mt-12">
 
               <h2 className="text-3xl font-bold mb-6">
 
-                📚 Courses
+                📚 Courses Offered
 
               </h2>
 
@@ -183,7 +217,7 @@ export default function CollegeDetails({ params }: Props) {
 
           </div>
 
-          {/* Right */}
+          {/* Right Side */}
 
           <div className="bg-white rounded-3xl shadow-lg p-8 h-fit">
 
@@ -195,16 +229,18 @@ export default function CollegeDetails({ params }: Props) {
 
             <div className="space-y-4">
 
-              {[
-                "Google",
-                "Microsoft",
-                "Amazon",
-                "TCS",
-                "Infosys",
-                "Accenture",
-                "Wipro",
-                "Capgemini",
-              ].map((company) => (
+              {(
+                college.recruiters ?? [
+                  "Google",
+                  "Microsoft",
+                  "Amazon",
+                  "TCS",
+                  "Infosys",
+                  "Accenture",
+                  "Wipro",
+                  "Capgemini",
+                ]
+              ).map((company) => (
 
                 <div
                   key={company}
@@ -221,7 +257,7 @@ export default function CollegeDetails({ params }: Props) {
 
             <Link
               href="/colleges"
-              className="block mt-10 bg-blue-600 text-center text-white py-4 rounded-xl font-bold"
+              className="block mt-10 bg-blue-600 text-center text-white py-4 rounded-xl font-bold hover:bg-blue-700"
             >
 
               ← Back to Colleges
@@ -235,5 +271,6 @@ export default function CollegeDetails({ params }: Props) {
       </div>
 
     </main>
+
   );
 }

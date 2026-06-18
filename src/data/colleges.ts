@@ -1,14 +1,33 @@
 export const colleges = [
   {
-    id: "1",
-    name: "COEP Technological University",
-    location: "Pune",
-    fees: 120000,
-    rating: 4.8,
-    placementRate: "92%",
-    averagePackage: "8.5 LPA",
-    highestPackage: "32 LPA",
-    courses: ["Computer Engineering", "IT", "Mechanical"],
+  id: "1",
+  name: "COEP Technological University",
+  location: "Pune",
+
+  fees: 120000,
+
+  rating: 4.8,
+
+  placementRate: "92%",
+
+  averagePackage: "8.5 LPA",
+
+  highestPackage: "32 LPA",
+
+  courses: [
+    "Computer Engineering",
+    "IT",
+    "Mechanical",
+  ],
+
+  recruiters: [
+    "Google",
+    "Microsoft",
+    "Amazon",
+    "TCS",
+    "Infosys",
+  ],
+
   },
 
   {
