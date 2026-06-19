@@ -4,6 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { colleges } from "@/data/colleges";
 import CollegeCard from "@/components/CollegeCard";
+import TrendingColleges from "@/components/TrendingColleges";
+
+import Recruiters from "@/components/Recruiters";
+
+import QuickStats from "@/components/QuickStats";
 
 export default function Home() {
 const [search, setSearch] = useState("");
@@ -212,6 +217,11 @@ return ( <main className="min-h-screen bg-slate-950 text-white">
     </button>
 
   </section>
+<QuickStats />
+
+<TrendingColleges />
+
+<Recruiters />
 
 </main>
 
