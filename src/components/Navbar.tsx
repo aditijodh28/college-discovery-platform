@@ -1,73 +1,148 @@
 "use client";
 
 import Link from "next/link";
-import ThemeToggle from "@/components/theme-toggle";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+
+  const pathname = usePathname();
+
+  const navItems = [
+
+    {
+      name: "Home",
+      href: "/",
+    },
+
+    {
+      name: "Colleges",
+      href: "/colleges",
+    },
+
+    {
+      name: "Compare",
+      href: "/compare",
+    },
+
+    {
+      name: "Predictor",
+      href: "/predictor",
+    },
+
+    {
+      name: "Placements",
+      href: "/placements",
+    },
+
+    {
+      name: "Dashboard",
+      href: "/dashboard",
+    },
+
+    {
+      name: "Saved",
+      href: "/saved",
+    },
+
+  ];
+
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <h1 className="font-bold text-2xl text-blue-600">
-          CollegeFinder
-        </Link>
 
-        <div className="flex items-center gap-6">
-          <Link
-            href="/"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-600"
-          >
-            Home
-          </Link>
+    <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
 
-          <Link
- href="/colleges"
- className="hover:text-blue-600"
->
+      <div className="max-w-7xl mx-auto px-6 h-16">
 
-Colleges
+        <div className="flex justify-between items-center h-full">
 
-</Link>
+          {/* Left */}
 
-          <Link
-            href="/compare"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-600"
-          >
-            Compare
-          </Link>
+          <div className="flex items-center gap-10">
 
-          <Link
-            href="/predictor"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-600"
-          >
-            Predictor
-          </Link>
+            <Link
+              href="/"
+              className="text-3xl font-bold text-blue-600"
+            >
 
-          <Link
-            href="/placements"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-600"
-          >
-            Placements
-          </Link>
+              🎓 CollegeFinder
 
-          <Link
-            href="/saved"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-600"
-          >
-            Saved
-          </Link>
-          <button className="bg-red-500 text-white px-3 py-2 rounded">
-            TEST
-          </button>
-          <ThemeToggle />
+            </Link>
+
+            <nav className="hidden md:flex gap-8">
+
+              {navItems.map((item) => (
+
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`font-medium transition
+
+                  ${
+                    pathname === item.href
+
+                      ? "text-blue-600 border-b-2 border-blue-600"
+
+                      : "text-gray-700 hover:text-blue-600"
+                  }
+                  `}
+                >
+
+                  {item.name}
+
+                </Link>
+
+              ))}
+
+            </nav>
+
+          </div>
+
+          {/* Right */}
+
+          <div className="flex items-center gap-5">
+
+            {/* Search */}
+
+            <input
+
+              type="text"
+
+              placeholder="🔍 Search"
+
+              className="hidden md:block border rounded-full px-4 py-2 outline-none"
+
+            />
+
+            {/* Notifications */}
+
+            <button className="text-2xl">
+
+              🔔
+
+            </button>
+
+            {/* Saved */}
+
+            <button className="text-2xl">
+
+              ❤️
+
+            </button>
+
+            {/* Profile */}
+
+            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+
+              AJ
+
+            </div>
+
+          </div>
+
         </div>
-      </div>
-      <Link href="/dashboard">
 
-Dashboard
-</Link>
-<Link href="/colleges">
-Colleges
-</Link>
-    </nav>
+      </div>
+
+    </header>
+
   );
 }
