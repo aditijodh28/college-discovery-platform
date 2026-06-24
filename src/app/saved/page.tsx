@@ -1,32 +1,23 @@
-import { getServerSession } from "next-auth";
-import { prisma } from "@/lib/prisma";
-import { redirect } from "next/navigation";
+export default function Saved(){
 
-export default async function SavedPage() {
-  const session = await getServerSession();
+ return(
 
-  if (!session) {
-    redirect("/");
-  }
+ <main className="p-10">
 
-  const user = await prisma.user.findUnique({
-    where: { email: session.user?.email! },
-    include: { savedColleges: true },
-  });
+ <h1 className="text-5xl font-bold">
 
-  return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold">
-        Saved Colleges
-      </h1>
+ ❤️ Saved Colleges
 
-      <ul className="mt-4">
-        {user?.savedColleges.map((c) => (
-          <li key={c.id}>
-            College ID: {c.collegeId}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+ </h1>
+
+ <div className="bg-white p-10 rounded-3xl shadow mt-10">
+
+ No saved colleges yet.
+
+ </div>
+
+ </main>
+
+ );
+
 }

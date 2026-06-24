@@ -2,147 +2,329 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+
+import DarkModeButton from "./DarkModeButton";
+
+import {
+  House,
+  GraduationCap,
+  Scale,
+  Brain,
+  Briefcase,
+  Heart,
+  LayoutDashboard,
+  Menu,
+  X,
+} from "lucide-react";
 
 export default function Navbar() {
-
   const pathname = usePathname();
 
-  const navItems = [
+  const [open, setOpen] = useState(false);
 
+  const links = [
     {
       name: "Home",
       href: "/",
+      icon: House,
     },
 
     {
       name: "Colleges",
-      href: "/colleges",
+      href: "/college",
+      icon: GraduationCap,
     },
 
     {
       name: "Compare",
       href: "/compare",
+      icon: Scale,
     },
 
     {
       name: "Predictor",
       href: "/predictor",
+      icon: Brain,
     },
 
     {
       name: "Placements",
       href: "/placements",
-    },
-
-    {
-      name: "Dashboard",
-      href: "/dashboard",
+      icon: Briefcase,
     },
 
     {
       name: "Saved",
       href: "/saved",
+      icon: Heart,
     },
 
+    {
+      name: "Dashboard",
+      href: "/dashboard",
+      icon: LayoutDashboard,
+    },
   ];
 
   return (
+    <header
+      className="
+      sticky
+      top-0
+      z-50
 
-    <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
+      bg-white/90
 
-      <div className="max-w-7xl mx-auto px-6 h-16">
+      dark:bg-slate-950/90
 
-        <div className="flex justify-between items-center h-full">
+      backdrop-blur-md
 
-          {/* Left */}
+      border-b
 
-          <div className="flex items-center gap-10">
+      border-slate-200
 
-            <Link
-              href="/"
-              className="text-3xl font-bold text-blue-600"
+      dark:border-slate-800
+
+      shadow-sm
+      "
+    >
+      <div
+        className="
+        max-w-7xl
+        mx-auto
+        px-6
+        h-20
+
+        flex
+
+        items-center
+
+        justify-between
+        "
+      >
+        {/* Logo */}
+
+        <Link
+          href="/"
+          className="
+          flex
+
+          items-center
+
+          gap-3
+
+          hover:scale-105
+
+          transition
+          "
+        >
+          <div
+            className="
+            w-11
+            h-11
+
+            rounded-xl
+
+            bg-blue-600
+
+            text-white
+
+            flex
+
+            items-center
+
+            justify-center
+
+            font-bold
+
+            text-lg
+            "
+          >
+            CD
+          </div>
+
+          <div>
+            <h1
+              className="
+              font-bold
+
+              text-xl
+
+              text-slate-900
+
+              dark:text-white
+              "
             >
+              College Discovery
+            </h1>
 
-              🎓 CollegeFinder
+            <p
+              className="
+              text-xs
 
-            </Link>
+              text-gray-500
 
-            <nav className="hidden md:flex gap-8">
-
-              {navItems.map((item) => (
-
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`font-medium transition
-
-                  ${
-                    pathname === item.href
-
-                      ? "text-blue-600 border-b-2 border-blue-600"
-
-                      : "text-gray-700 hover:text-blue-600"
-                  }
-                  `}
-                >
-
-                  {item.name}
-
-                </Link>
-
-              ))}
-
-            </nav>
-
+              dark:text-slate-400
+              "
+            >
+              Discover • Compare • Decide
+            </p>
           </div>
+        </Link>
 
-          {/* Right */}
+        {/* Desktop Menu */}
 
-          <div className="flex items-center gap-5">
+        <nav
+          className="
+          hidden
 
-            {/* Search */}
+          lg:flex
 
-            <input
+          items-center
 
-              type="text"
+          gap-2
+          "
+        >
+          {links.map((item) => {
+            const Icon = item.icon;
 
-              placeholder="🔍 Search"
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`
+                flex
 
-              className="hidden md:block border rounded-full px-4 py-2 outline-none"
+                items-center
 
-            />
+                gap-2
 
-            {/* Notifications */}
+                px-5
 
-            <button className="text-2xl">
+                py-3
 
-              🔔
+                rounded-xl
 
-            </button>
+                font-medium
 
-            {/* Saved */}
+                transition-all
 
-            <button className="text-2xl">
+                duration-300
 
-              ❤️
+                hover:-translate-y-1
 
-            </button>
+                hover:shadow-lg
 
-            {/* Profile */}
+                ${
+                  pathname === item.href
+                    ? "bg-blue-600 text-white"
+                    : `
+                      text-slate-700
 
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                      dark:text-slate-300
 
-              AJ
+                      hover:bg-slate-100
 
-            </div>
+                      dark:hover:bg-slate-800
+                    `
+                }
+                `}
+              >
+                <Icon size={18} />
 
-          </div>
+                {item.name}
+              </Link>
+            );
+          })}
+        </nav>
 
+        {/* Right Side */}
+
+        <div
+          className="
+          flex
+
+          items-center
+
+          gap-4
+          "
+        >
+          {/* Dark Mode */}
+
+          <DarkModeButton />
+
+          {/* Mobile Menu */}
+
+          <button
+            className="
+            lg:hidden
+
+            text-slate-700
+
+            dark:text-white
+            "
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
         </div>
-
       </div>
 
-    </header>
+      {/* Mobile Menu */}
 
+      {open && (
+        <div
+          className="
+          lg:hidden
+
+          bg-white
+
+          dark:bg-slate-950
+
+          border-t
+
+          dark:border-slate-800
+          "
+        >
+          {links.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="
+                flex
+
+                items-center
+
+                gap-3
+
+                px-6
+
+                py-4
+
+                text-slate-700
+
+                dark:text-slate-300
+
+                hover:bg-slate-100
+
+                dark:hover:bg-slate-800
+
+                transition
+                "
+              >
+                <Icon size={18} />
+
+                {item.name}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </header>
   );
 }

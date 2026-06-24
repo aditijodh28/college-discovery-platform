@@ -1,34 +1,131 @@
 import Link from "next/link";
 
-export default function CollegeCard({ college }: any) {
-  return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500 transition">
+import {
+  MapPin,
+  Star,
+  Briefcase,
+  IndianRupee,
+} from "lucide-react";
 
-      <h2 className="text-2xl font-bold mb-2">
+type Props = {
+  college: {
+    id: string;
+    name: string;
+    location: string;
+    rating: number;
+    fees: number;
+    placementRate: string;
+  };
+};
+
+export default function CollegeCard({ college }: Props) {
+  return (
+    <div
+      className="
+      bg-white
+      rounded-3xl
+      shadow-lg
+      p-8
+      hover:shadow-2xl
+      hover:-translate-y-2
+      transition-all
+      duration-300
+      border
+      "
+    >
+      {/* College Name */}
+
+      <h2 className="text-2xl font-bold mb-6">
         {college.name}
       </h2>
 
-      <p className="text-slate-400 mb-4">
-        📍 {college.location}
-      </p>
+      {/* Location */}
 
-      <div className="flex justify-between mb-4">
-        <span>⭐ {college.rating}</span>
-        <span>{college.placementRate}</span>
+      <div className="flex items-center gap-3 mb-4 text-gray-600">
+
+        <MapPin
+          size={18}
+          className="text-red-500"
+        />
+
+        <span>
+          {college.location}
+        </span>
+
       </div>
 
-      <p className="text-slate-400 text-sm mb-4">
-        {college.overview}
-      </p>
+      {/* Rating */}
 
-<Link
-  href={`/colleges/${college.id}`}
-  className="bg-blue-600 text-white px-4 py-2 rounded-lg"
->
+      <div className="flex items-center gap-3 mb-4 text-gray-600">
 
-  View Details
+        <Star
+          size={18}
+          className="text-yellow-500"
+        />
 
-</Link>
+        <span>
+          {college.rating}
+        </span>
+
+      </div>
+
+      {/* Fees */}
+
+      <div className="flex items-center gap-3 mb-4 text-gray-600">
+
+        <IndianRupee
+          size={18}
+          className="text-green-600"
+        />
+
+        <span>
+
+          ₹{college.fees.toLocaleString()}
+
+        </span>
+
+      </div>
+
+      {/* Placement */}
+
+      <div className="flex items-center gap-3 mb-8 text-gray-600">
+
+        <Briefcase
+          size={18}
+          className="text-blue-600"
+        />
+
+        <span>
+
+          {college.placementRate}
+
+        </span>
+
+      </div>
+
+      {/* Button */}
+
+      <Link
+
+        href={`/college/${college.id}`}
+
+        className="
+        w-full
+        block
+        text-center
+        bg-blue-600
+        hover:bg-blue-700
+        text-white
+        py-3
+        rounded-xl
+        font-semibold
+        "
+
+      >
+
+        View Details
+
+      </Link>
 
     </div>
   );

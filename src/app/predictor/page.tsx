@@ -2,33 +2,56 @@
 
 import { useState } from "react";
 
-export default function PredictorPage() {
+export default function Predictor() {
 
-  const [rank, setRank] = useState("");
+ const [rank,setRank]=useState("");
 
-  return (
-    <main className="max-w-4xl mx-auto p-6">
+ return(
 
-      <h1 className="text-5xl font-bold mb-8">
-        Admission Predictor
-      </h1>
+ <main className="p-10">
 
-      <input
-        type="number"
-        placeholder="Enter Rank"
-        value={rank}
-        onChange={(e) =>
-          setRank(e.target.value)
-        }
-        className="w-full border p-4 rounded-xl"
-      />
+ <h1 className="text-5xl font-bold mb-10">
 
-      <button
-        className="bg-blue-600 text-white px-6 py-3 rounded-xl mt-4"
-      >
-        Predict
-      </button>
+ 🎯 Admission Predictor
 
-    </main>
-  );
+ </h1>
+
+ <input
+
+ type="number"
+
+ placeholder="Enter Rank"
+
+ value={rank}
+
+ onChange={(e)=>setRank(e.target.value)}
+
+ className="border p-4 rounded-xl"
+
+ />
+
+ {rank && (
+
+ <div className="mt-8 bg-white p-8 rounded-3xl shadow">
+
+ Recommended:
+
+ <ul>
+
+ <li>COEP Pune</li>
+
+ <li>VJTI Mumbai</li>
+
+ <li>PICT Pune</li>
+
+ </ul>
+
+ </div>
+
+ )}
+
+ </main>
+
+ );
+
 }

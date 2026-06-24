@@ -1,35 +1,39 @@
-import { colleges } from "@/data/colleges";
+export default function Placements() {
 
-export default function PlacementsPage() {
+ return(
 
-  return (
-    <main className="max-w-7xl mx-auto p-6">
+ <main className="p-10">
 
-      <h1 className="text-5xl font-bold mb-8">
-        Placement Statistics
-      </h1>
+ <h1 className="text-5xl font-bold mb-10">
 
-      <div className="grid md:grid-cols-3 gap-6">
+ 💼 Placements
 
-        {colleges.map((college) => (
-          <div
-            key={college.id}
-            className="p-6 rounded-xl shadow bg-white"
-          >
-            <h2 className="font-bold text-xl">
-              {college.name}
-            </h2>
+ </h1>
 
-            <p className="mt-2">
-              Placement: 95%
-            </p>
+ <div className="grid md:grid-cols-3 gap-8">
 
-            <p>Highest Package: ₹20 LPA</p>
-          </div>
-        ))}
+ {["Google","Microsoft","Amazon","TCS","Infosys","Wipro"]
 
-      </div>
+ .map((company)=>(
 
-    </main>
-  );
+ <div
+
+ key={company}
+
+ className="bg-white p-10 rounded-3xl shadow"
+
+ >
+
+ {company}
+
+ </div>
+
+ ))}
+
+ </div>
+
+ </main>
+
+ );
+
 }
