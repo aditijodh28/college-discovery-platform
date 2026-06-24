@@ -1,157 +1,104 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 
 import { colleges } from "@/data/colleges";
 
-import CollegeCard from "@/components/CollegeCard";
-import TrendingColleges from "@/components/TrendingColleges";
-import Recruiters from "@/components/Recruiters";
-import QuickStats from "@/components/QuickStats";
+import StatCard from "@/components/StatCard";
+
+import {
+  GraduationCap,
+  BarChart3,
+  IndianRupee,
+  BookOpen,
+  MapPin,
+  Star,
+  Building2,
+  Calendar,
+} from "lucide-react";
 
 export default function Home() {
-  const [search, setSearch] = useState("");
-
-  const filtered = colleges.filter(
-    (college) =>
-      college.name
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-
-      college.location
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-
-      college.courses.some((course) =>
-        course
-          .toLowerCase()
-          .includes(search.toLowerCase())
-      )
-  );
 
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-950 text-black dark:text-white">
 
-      {/* Hero Section */}
+    <main className="bg-slate-50 min-h-screen">
 
-      <section className="relative overflow-hidden">
+      {/* Hero */}
 
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-700/20 via-purple-700/20 to-cyan-700/20 blur-3xl"></div>
+      <section className="bg-gradient-to-r from-blue-700 to-indigo-700 text-white">
 
-        <div className="relative max-w-7xl mx-auto px-6 py-28 text-center">
+        <div className="max-w-7xl mx-auto px-6 py-24 text-center">
 
-          <span className="px-4 py-2 rounded-full bg-blue-500/20 text-blue-500 border border-blue-500/30">
-            🎓 India's Smart College Discovery Platform
-          </span>
+          <h1 className="text-6xl font-bold mb-8">
 
-          <h1 className="text-6xl md:text-7xl font-extrabold mt-8 leading-tight">
-
-            Discover Your
-
-            <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-
-              Dream College
-
-            </span>
+            Discover Your Dream College
 
           </h1>
 
-          <p className="max-w-3xl mx-auto mt-8 text-xl text-gray-600 dark:text-slate-300">
+          <p className="text-xl max-w-3xl mx-auto mb-10">
 
-            Compare colleges, explore placements, predict admissions and make smarter career decisions.
+            Search, compare and predict admissions from India's top colleges.
 
           </p>
 
-          <div className="flex justify-center gap-4 mt-10 flex-wrap">
+          <div className="flex justify-center gap-6 flex-wrap">
 
-            <Link
-              href="/colleges"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold shadow-lg"
-            >
-              Explore Colleges
-            </Link>
+           <Link
+  href="/college"
 
-            <Link
-              href="/compare"
-              className="border border-gray-300 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-800 px-8 py-4 rounded-xl font-semibold"
-            >
-              Compare Colleges
-            </Link>
+  className="
+  bg-white
+  text-blue-700
+  px-8
+  py-4
+  rounded-xl
+  font-bold
 
-          </div>
+  hover:scale-110
+  hover:shadow-2xl
 
-        </div>
+  active:scale-95
 
-      </section>
+  transition-all
+  duration-300
+  "
+>
 
-      {/* Stats */}
+  Explore Colleges
 
-      <section className="max-w-7xl mx-auto px-6 -mt-8">
+</Link>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+<Link
+  href="/predictor"
 
-          <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-6 text-center shadow">
+  className="
+  bg-indigo-600
+  text-white
 
-            <h2 className="text-4xl font-bold text-cyan-400">
+  px-8
+  py-4
 
-              {colleges.length}
+  rounded-xl
 
-            </h2>
+  font-bold
 
-            <p className="text-gray-500 dark:text-slate-400 mt-2">
+  hover:bg-indigo-700
 
-              Colleges
+  hover:scale-110
 
-            </p>
+  hover:shadow-2xl
 
-          </div>
+  active:scale-95
 
-          <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-6 text-center shadow">
+  transition-all
 
-            <h2 className="text-4xl font-bold text-green-400">
+  duration-300
+  "
+>
 
-              95%
+  AI Predictor
 
-            </h2>
-
-            <p className="text-gray-500 dark:text-slate-400 mt-2">
-
-              Placement Success
-
-            </p>
-
-          </div>
-
-          <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-6 text-center shadow">
-
-            <h2 className="text-4xl font-bold text-purple-400">
-
-              150+
-
-            </h2>
-
-            <p className="text-gray-500 dark:text-slate-400 mt-2">
-
-              Courses
-
-            </p>
-
-          </div>
-
-          <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-6 text-center shadow">
-
-            <h2 className="text-4xl font-bold text-yellow-400">
-
-              ₹65L
-
-            </h2>
-
-            <p className="text-gray-500 dark:text-slate-400 mt-2">
-
-              Highest Package
-
-            </p>
+</Link>
 
           </div>
 
@@ -161,21 +108,107 @@ export default function Home() {
 
       {/* Search */}
 
-      <section className="max-w-4xl mx-auto px-6 mt-20">
+      <section className="max-w-6xl mx-auto -mt-10 px-6">
 
-        <div className="bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-800 rounded-2xl p-4 shadow">
+        <div className="bg-white p-8 rounded-3xl shadow-xl">
 
           <input
 
             type="text"
 
-            placeholder="🔍 Search colleges by name, location or course..."
+            placeholder="Search college, city, course..."
 
-            className="w-full bg-transparent outline-none text-lg text-black dark:text-white"
+            className="w-full border p-5 rounded-xl text-lg"
 
-            value={search}
+          />
 
-            onChange={(e) => setSearch(e.target.value)}
+        </div>
+
+      </section>
+
+      {/* Stats */}
+
+      <section className="max-w-7xl mx-auto py-20 px-6">
+
+        <div className="grid md:grid-cols-4 gap-8">
+
+          <StatCard
+
+            title="Colleges"
+
+            value="25+"
+
+            icon={
+
+              <GraduationCap
+
+                size={40}
+
+                className="text-blue-600"
+
+              />
+
+            }
+
+          />
+
+          <StatCard
+
+            title="Placement"
+
+            value="95%"
+
+            icon={
+
+              <BarChart3
+
+                size={40}
+
+                className="text-green-600"
+
+              />
+
+            }
+
+          />
+
+          <StatCard
+
+            title="Courses"
+
+            value="150+"
+
+            icon={
+
+              <BookOpen
+
+                size={40}
+
+                className="text-purple-600"
+
+              />
+
+            }
+
+          />
+
+          <StatCard
+
+            title="Highest Package"
+
+            value="₹65L"
+
+            icon={
+
+              <IndianRupee
+
+                size={40}
+
+                className="text-orange-600"
+
+              />
+
+            }
 
           />
 
@@ -185,152 +218,220 @@ export default function Home() {
 
       {/* Featured Colleges */}
 
-      <section className="max-w-7xl mx-auto px-6 mt-20">
+      <section className="max-w-7xl mx-auto px-6 mb-20">
 
-        <div className="flex justify-between items-center mb-10 flex-wrap gap-4">
+        <div className="flex justify-between items-center mb-8">
 
-          <div>
+          <h2 className="text-4xl font-bold">
 
-            <p className="text-blue-500 font-semibold mb-2">
+            Featured Colleges
 
-              TOP RATED COLLEGES
+          </h2>
 
-            </p>
+          <span>
 
-            <h2 className="text-5xl font-extrabold">
-
-              Featured Colleges
-
-            </h2>
-
-          </div>
-
-          <span className="text-gray-500 dark:text-slate-400">
-
-            {filtered.length} Results
+            {colleges.length} Results
 
           </span>
 
         </div>
 
-        {filtered.length > 0 ? (
+        <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {colleges.slice(0, 6).map((college) => (
 
-            {filtered.map((college) => (
+            <div
 
-              <CollegeCard
+              key={college.id}
 
-                key={college.id}
+              className="bg-white p-8 rounded-3xl shadow hover:shadow-2xl hover:-translate-y-2 transition"
 
-                college={college}
+            >
 
-              />
+              <h3 className="text-2xl font-bold mb-6">
 
-            ))}
+                {college.name}
 
-          </div>
+              </h3>
 
-        ) : (
+              <div className="flex items-center gap-3 mb-3">
 
-          <div className="text-center py-10 text-gray-500 dark:text-slate-400">
+                <MapPin size={18} />
 
-            No colleges found.
+                {college.location}
 
-          </div>
+              </div>
 
-        )}
+              <div className="flex items-center gap-3 mb-3">
 
-         
+                <Star size={18} />
 
-      <TrendingColleges />
+                {college.rating}
 
-      <Recruiters />
+              </div>
+
+              <div className="flex items-center gap-3 mb-5">
+
+                <BarChart3 size={18} />
+
+                {college.placementRate}
+
+              </div>
+
+              <Link
+
+                href={`/college/${college.id}`}
+
+                className="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl"
+
+              >
+
+                View Details
+
+              </Link>
+
+            </div>
+
+          ))}
+
+        </div>
 
       </section>
 
-      {/* Features */}
+      {/* Trending Cities */}
 
-      <section className="max-w-7xl mx-auto px-6 py-24">
+      <section className="max-w-7xl mx-auto px-6 mb-20">
 
-        <h2 className="text-5xl font-bold text-center mb-16">
+        <h2 className="text-4xl font-bold mb-10">
 
-          Why Students Love It
+          Trending Cities
+
+        </h2>
+
+        <div className="grid md:grid-cols-4 gap-8">
+
+          {["Pune", "Mumbai", "Bengaluru", "Hyderabad"].map((city) => (
+
+            <div
+
+              key={city}
+
+              className="bg-white p-10 rounded-3xl shadow text-center text-2xl font-bold"
+
+            >
+
+              {city}
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* Recruiters */}
+
+      <section className="max-w-7xl mx-auto px-6 mb-20">
+
+        <h2 className="text-4xl font-bold mb-10">
+
+          Top Recruiters
+
+        </h2>
+
+        <div className="grid md:grid-cols-4 gap-8">
+
+          {[
+
+            "Google",
+
+            "Microsoft",
+
+            "Amazon",
+
+            "TCS",
+
+            "Infosys",
+
+            "Accenture",
+
+            "Wipro",
+
+            "Capgemini",
+
+          ].map((company) => (
+
+            <div
+
+              key={company}
+
+              className="bg-white p-8 rounded-3xl shadow flex items-center justify-center gap-3 font-bold"
+
+            >
+
+              <Building2 size={20} />
+
+              {company}
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* Exams */}
+
+      <section className="max-w-7xl mx-auto px-6 pb-20">
+
+        <h2 className="text-4xl font-bold mb-10">
+
+          Upcoming Exams
 
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 shadow">
+          {[
 
-            <div className="text-5xl mb-4">
+            "JEE Main",
 
-              🎯
+            "MHT CET",
 
-            </div>
+            "GATE",
 
-            <h3 className="text-2xl font-bold mb-3">
+            "CAT",
 
-              Admission Predictor
+            "CUET",
 
-            </h3>
+            "NEET",
 
-            <p className="text-gray-500 dark:text-slate-400">
+          ].map((exam) => (
 
-              Predict your chances using previous cutoffs and ranks.
+            <div
 
-            </p>
+              key={exam}
 
-          </div>
+              className="bg-white p-8 rounded-3xl shadow flex items-center gap-4"
 
-          <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 shadow">
+            >
 
-            <div className="text-5xl mb-4">
+              <Calendar size={22} />
 
-              📊
-
-            </div>
-
-            <h3 className="text-2xl font-bold mb-3">
-
-              Compare Colleges
-
-            </h3>
-
-            <p className="text-gray-500 dark:text-slate-400">
-
-              Compare fees, placements and ratings side-by-side.
-
-            </p>
-
-          </div>
-
-          <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-8 shadow">
-
-            <div className="text-5xl mb-4">
-
-              🚀
+              {exam}
 
             </div>
 
-            <h3 className="text-2xl font-bold mb-3">
-
-              Placement Insights
-
-            </h3>
-
-            <p className="text-gray-500 dark:text-slate-400">
-
-              Explore salary trends and top recruiters.
-
-            </p>
-
-          </div>
+          ))}
 
         </div>
 
       </section>
 
     </main>
+
   );
+
 }

@@ -1,3 +1,26 @@
+export type College = {
+
+  id: string;
+
+  name: string;
+
+  location: string;
+
+  fees: number;
+
+  rating: number;
+
+  placementRate: string;
+
+  averagePackage: string;
+
+  highestPackage: string;
+
+  courses: string[];
+
+  recruiters: string[];
+
+};
 export const colleges = [
   {
   id: "1",
