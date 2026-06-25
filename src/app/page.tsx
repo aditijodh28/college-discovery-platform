@@ -3,10 +3,11 @@
 import Link from "next/link";
 
 import { colleges } from "@/data/colleges";
-
+import SearchBar from "@/components/SearchBar";
 import StatCard from "@/components/StatCard";
 
 import {
+  
   GraduationCap,
   BarChart3,
   IndianRupee,
@@ -25,7 +26,12 @@ export default function Home() {
 
       {/* Hero */}
 
-      <section className="bg-gradient-to-r from-blue-700 to-indigo-700 text-white">
+      <section className="
+bg-gradient-to-br
+from-indigo-50
+via-purple-50
+to-white
+">
 
         <div className="max-w-7xl mx-auto px-6 py-24 text-center">
 
@@ -107,25 +113,9 @@ export default function Home() {
       </section>
 
       {/* Search */}
-
-      <section className="max-w-6xl mx-auto -mt-10 px-6">
-
-        <div className="bg-white p-8 rounded-3xl shadow-xl">
-
-          <input
-
-            type="text"
-
-            placeholder="Search college, city, course..."
-
-            className="w-full border p-5 rounded-xl text-lg"
-
-          />
-
-        </div>
-
-      </section>
-
+<section className="max-w-5xl mx-auto -mt-8 px-6 relative z-10">
+  <SearchBar />
+</section>
       {/* Stats */}
 
       <section className="max-w-7xl mx-auto py-20 px-6">
