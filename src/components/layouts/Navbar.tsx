@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import DarkModeButton from "./DarkModeButton";
+import DarkModeButton from "../DarkModeButton";
 
 import {
   House,
