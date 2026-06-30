@@ -1,9 +1,9 @@
 import "./globals.css";
 
 import Navbar from "@/components/layouts/Navbar";
-import FloatingButtons from "@/components/FloatingButtons";
+import Footer from "@/components/layouts/Footer";
+import FloatingButtons from "@/components/layouts/FloatingButtons";
 import Providers from "./providers";
-import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "College Discovery Platform",
