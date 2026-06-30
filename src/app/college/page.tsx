@@ -3,9 +3,7 @@
 import { useState } from "react";
 
 import { colleges } from "@/data/colleges";
-
-import CollegeCard from "@/components/CollegeCard";
-
+import CollegeCard from "@/components/college/CollegeCard";
 import FilterSidebar from "@/components/FilterSidebar";
 
 export default function CollegesPage() {
