@@ -9,7 +9,7 @@ import ScholarshipFinder from "@/components/ScholarshipFinder";
 import AIRecommender from "@/components/AIRecommender";
 import StatCard from "@/components/common/StatCard";
 import DarkModeButton from "@/components/common/DarkModeButton";
-
+import { colleges } from "@/data/colleges";
 export default function Home() {
   return (
     <main className="bg-slate-50">

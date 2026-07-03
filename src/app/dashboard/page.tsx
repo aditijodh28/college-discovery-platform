@@ -1,221 +1,167 @@
 "use client";
 
 import {
-
   GraduationCap,
-
   TrendingUp,
-
   Briefcase,
-
   IndianRupee,
-
   Building2,
-
   MapPin,
-
   Bell,
-
   ArrowUpRight,
-
+  Bookmark,
+  Search,
+  Sparkles,
 } from "lucide-react";
 
 export default function Dashboard() {
-
   return (
-
-    <main className="min-h-screen bg-slate-100 p-8">
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-8">
 
       {/* Header */}
 
-      <div className="mb-10">
+      <div className="flex flex-col lg:flex-row justify-between items-center mb-10 gap-6">
 
-        <h1 className="text-5xl font-bold">
+        <div>
+          <p className="text-blue-600 font-semibold">
+            Welcome Back 👋
+          </p>
 
-          Dashboard
+          <h1 className="text-5xl font-extrabold mt-2">
+            College Dashboard
+          </h1>
 
-        </h1>
+          <p className="text-slate-500 mt-2">
+            Explore, compare and save colleges for your future.
+          </p>
+        </div>
 
-        <p className="text-gray-500 mt-2">
+        <div className="flex gap-4 flex-wrap">
 
-          Welcome to your College Discovery analytics.
+          <button className="bg-white shadow-lg rounded-xl px-6 py-3 hover:scale-105 transition">
+            <Search className="inline mr-2" size={18} />
+            Search
+          </button>
 
-        </p>
+          <button className="bg-blue-600 text-white rounded-xl px-6 py-3 hover:scale-105 transition">
+            <Sparkles className="inline mr-2" size={18} />
+            AI Recommendation
+          </button>
+
+        </div>
 
       </div>
 
-      {/* Hero Banner */}
+      {/* Hero */}
 
-      <section
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 text-white p-10 mb-10 shadow-2xl">
 
-        className="
-        bg-gradient-to-r
-        from-blue-700
-        to-indigo-700
-        rounded-3xl
-        p-10
-        text-white
-        mb-12
-        shadow-xl
-        hover:scale-[1.01]
-        transition
-        duration-300
-        "
+        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
 
-      >
+        <div className="relative z-10">
 
-        <div className="flex justify-between flex-wrap gap-8">
+          <h2 className="text-5xl font-bold mb-5">
+            Find Your Dream College
+          </h2>
 
-          <div>
+          <p className="text-lg max-w-2xl mb-8 opacity-90">
+            Compare colleges, predict admissions, analyze placements,
+            explore recruiters and build your career.
+          </p>
 
-            <h2 className="text-4xl font-bold mb-4">
-
-              Discover Your Future
-
-            </h2>
-
-            <p className="text-lg">
-
-              Compare colleges, placements and career opportunities.
-
-            </p>
-
-          </div>
-
-          <button
-
-            className="
-            bg-white
-            text-blue-700
-            px-8
-            py-4
-            rounded-2xl
-            font-bold
-            hover:scale-110
-            transition
-            "
-
-          >
-
-            Explore Now
-
+          <button className="bg-white text-blue-700 px-8 py-4 rounded-xl font-bold hover:scale-105 transition">
+            Explore Colleges
           </button>
 
         </div>
 
       </section>
 
-      {/* Statistics */}
+      {/* Stats */}
 
-      <div className="grid md:grid-cols-4 gap-8 mb-12">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
 
-        <Card
-
+        <StatCard
           title="Colleges"
-
-          value="25+"
-
-          icon={<GraduationCap size={32} />}
-
+          value="250+"
+          color="blue"
+          icon={<GraduationCap />}
         />
 
-        <Card
-
+        <StatCard
           title="Placements"
-
           value="95%"
-
-          icon={<Briefcase size={32} />}
-
+          color="green"
+          icon={<Briefcase />}
         />
 
-        <Card
-
-          title="Avg Package"
-
-          value="8.5 LPA"
-
-          icon={<IndianRupee size={32} />}
-
+        <StatCard
+          title="Average Package"
+          value="₹8.5 LPA"
+          color="orange"
+          icon={<IndianRupee />}
         />
 
-        <Card
-
+        <StatCard
           title="Growth"
-
           value="+18%"
-
-          icon={<TrendingUp size={32} />}
-
+          color="purple"
+          icon={<TrendingUp />}
         />
 
       </div>
 
-      {/* Two Column Layout */}
+      {/* Middle */}
 
-      <div className="grid lg:grid-cols-2 gap-8 mb-12">
+      <div className="grid lg:grid-cols-3 gap-8 mb-10">
 
         {/* Progress */}
 
-        <div className="bg-white rounded-3xl p-8 shadow-lg">
+        <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl p-8">
 
           <h2 className="text-3xl font-bold mb-8">
-
-            Performance
-
+            Performance Analytics
           </h2>
 
-          <Progress
+          <Progress title="Placements" value={95} />
 
-            title="Placements"
+          <Progress title="Academics" value={92} />
 
-            value={95}
+          <Progress title="Infrastructure" value={88} />
 
-          />
+          <Progress title="Research" value={84} />
 
-          <Progress
-
-            title="Infrastructure"
-
-            value={88}
-
-          />
-
-          <Progress
-
-            title="Academics"
-
-            value={92}
-
-          />
-
-          <Progress
-
-            title="Research"
-
-            value={84}
-
-          />
+          <Progress title="Student Satisfaction" value={96} />
 
         </div>
 
-        {/* Activity */}
+        {/* Quick Actions */}
 
-        <div className="bg-white rounded-3xl p-8 shadow-lg">
+        <div className="bg-white rounded-3xl shadow-xl p-8">
 
-          <h2 className="text-3xl font-bold mb-8">
-
-            Recent Activity
-
+          <h2 className="text-3xl font-bold mb-6">
+            Quick Actions
           </h2>
 
-          <Activity text="Compared COEP and VJTI" />
+          <QuickAction
+            icon={<Search size={18} />}
+            text="Search Colleges"
+          />
 
-          <Activity text="Saved PICT Pune" />
+          <QuickAction
+            icon={<Bookmark size={18} />}
+            text="Saved Colleges"
+          />
 
-          <Activity text="Predicted JEE Rank" />
+          <QuickAction
+            icon={<Bell size={18} />}
+            text="Latest Notifications"
+          />
 
-          <Activity text="Viewed Placements" />
+          <QuickAction
+            icon={<TrendingUp size={18} />}
+            text="Placement Trends"
+          />
 
         </div>
 
@@ -223,59 +169,35 @@ export default function Dashboard() {
 
       {/* Bottom */}
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8">
 
         {/* Recruiters */}
 
-        <div className="bg-white rounded-3xl p-8 shadow-lg">
+        <div className="bg-white rounded-3xl shadow-xl p-8">
 
-          <h2 className="text-3xl font-bold mb-8">
-
+          <h2 className="text-3xl font-bold mb-6">
             Top Recruiters
-
           </h2>
 
           <div className="grid grid-cols-2 gap-4">
 
             {[
-
               "Google",
-
               "Microsoft",
-
               "Amazon",
-
-              "TCS",
-
               "Infosys",
-
+              "TCS",
               "Accenture",
-
+              "Capgemini",
+              "Wipro",
             ].map((company) => (
-
               <div
-
                 key={company}
-
-                className="
-                bg-slate-100
-                p-5
-                rounded-2xl
-                flex
-                items-center
-                gap-3
-                hover:scale-105
-                transition
-                "
-
+                className="bg-slate-100 rounded-2xl p-5 flex items-center gap-3 hover:bg-blue-50 hover:scale-105 transition"
               >
-
-                <Building2 size={20} />
-
+                <Building2 />
                 {company}
-
               </div>
-
             ))}
 
           </div>
@@ -284,48 +206,31 @@ export default function Dashboard() {
 
         {/* Cities */}
 
-        <div className="bg-white rounded-3xl p-8 shadow-lg">
+        <div className="bg-white rounded-3xl shadow-xl p-8">
 
-          <h2 className="text-3xl font-bold mb-8">
-
+          <h2 className="text-3xl font-bold mb-6">
             Trending Cities
-
           </h2>
 
-          {["Pune","Mumbai","Bengaluru","Hyderabad"].map(
-
-            (city)=>(
-
+          {[
+            "Pune",
+            "Mumbai",
+            "Nagpur",
+            "Bengaluru",
+            "Hyderabad",
+            "Delhi",
+          ].map((city) => (
             <div
-
               key={city}
-
-              className="
-              flex
-              justify-between
-              items-center
-              p-5
-              mb-4
-              rounded-2xl
-              bg-slate-100
-              hover:scale-105
-              transition
-              "
-
+              className="flex justify-between items-center bg-slate-100 rounded-2xl p-5 mb-4 hover:bg-blue-50 hover:translate-x-2 transition"
             >
-
-              <div className="flex items-center gap-3">
-
-                <MapPin size={20} />
-
+              <div className="flex gap-3 items-center">
+                <MapPin />
                 {city}
-
               </div>
 
               <ArrowUpRight />
-
             </div>
-
           ))}
 
         </div>
@@ -333,156 +238,83 @@ export default function Dashboard() {
       </div>
 
     </main>
-
   );
-
 }
 
-function Card({
-
+function StatCard({
   title,
-
   value,
-
   icon,
-
+  color,
 }: any) {
-
   return (
-
-    <div
-
-      className="
-      bg-white
-      rounded-3xl
-      p-8
-      shadow-lg
-      hover:-translate-y-2
-      hover:shadow-2xl
-      transition-all
-      duration-300
-      "
-
-    >
+    <div className="bg-white rounded-3xl shadow-xl p-8 hover:-translate-y-2 hover:shadow-2xl transition">
 
       <div className="flex justify-between">
 
         <div>
 
-          <p className="text-gray-500">
-
+          <p className="text-slate-500">
             {title}
-
           </p>
 
-          <h2 className="text-5xl font-bold mt-3">
-
+          <h2 className="text-4xl font-bold mt-3">
             {value}
-
           </h2>
 
         </div>
 
-        <div className="text-blue-600">
-
+        <div
+          className={`h-14 w-14 rounded-2xl flex items-center justify-center
+          ${
+            color === "blue"
+              ? "bg-blue-100 text-blue-600"
+              : color === "green"
+              ? "bg-green-100 text-green-600"
+              : color === "orange"
+              ? "bg-orange-100 text-orange-600"
+              : "bg-purple-100 text-purple-600"
+          }`}
+        >
           {icon}
-
         </div>
 
       </div>
 
     </div>
-
   );
-
 }
 
-function Progress({
-
-  title,
-
-  value,
-
-}: any) {
-
+function Progress({ title, value }: any) {
   return (
+    <div className="mb-7">
 
-    <div className="mb-8">
+      <div className="flex justify-between mb-2 font-medium">
 
-      <div className="flex justify-between mb-2">
+        <span>{title}</span>
 
-        <span>
-
-          {title}
-
-        </span>
-
-        <span>
-
-          {value}%
-
-        </span>
+        <span>{value}%</span>
 
       </div>
 
-      <div className="bg-slate-200 h-3 rounded-full">
+      <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
 
         <div
-
-          className="
-          bg-blue-600
-          h-3
-          rounded-full
-          transition-all
-          duration-1000
-          "
-
-          style={{
-
-            width:`${value}%`
-
-          }}
-
+          className="h-full rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-1000"
+          style={{ width: `${value}%` }}
         />
 
       </div>
 
     </div>
-
   );
-
 }
 
-function Activity({
-
-  text,
-
-}: any) {
-
+function QuickAction({ icon, text }: any) {
   return (
-
-    <div
-
-      className="
-      flex
-      items-center
-      gap-4
-      mb-6
-      bg-slate-100
-      p-5
-      rounded-2xl
-      hover:scale-105
-      transition
-      "
-
-    >
-
-      <Bell size={18} />
-
+    <button className="w-full flex items-center gap-4 p-5 rounded-2xl bg-slate-100 hover:bg-blue-600 hover:text-white transition mb-4">
+      {icon}
       {text}
-
-    </div>
-
+    </button>
   );
-
 }
