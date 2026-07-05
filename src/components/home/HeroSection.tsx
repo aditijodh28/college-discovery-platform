@@ -15,14 +15,10 @@ import {
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
-
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       {/* Background */}
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#dbeafe,transparent_35%),radial-gradient(circle_at_bottom_right,#c7d2fe,transparent_35%)]" />
-
+      <div className="absolute inset-0 dark:hidden bg-[radial-gradient(circle_at_top_left,#dbeafe,transparent_35%),radial-gradient(circle_at_bottom_right,#c7d2fe,transparent_35%)]" />
       <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-24">
-
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
           {/* LEFT */}
@@ -31,7 +27,7 @@ export default function HeroSection() {
 
             {/* Badge */}
 
-            <div className="inline-flex items-center gap-3 rounded-full bg-white shadow-lg border px-5 py-3">
+            <div className="inline-flex items-center gap-3 rounded-full bg-white dark:bg-slate-900 shadow-lg border px-5 py-3">
 
               <div className="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
 
@@ -39,7 +35,7 @@ export default function HeroSection() {
 
               </div>
 
-              <span className="font-semibold text-slate-700">
+              <span className="font-semibold text-slate-700 dark:text-slate-200">
 
                 AI Powered College Discovery Platform
 
@@ -49,7 +45,7 @@ export default function HeroSection() {
 
             {/* Heading */}
 
-            <h1 className="mt-10 text-6xl lg:text-7xl font-black leading-tight tracking-tight text-slate-900">
+            <h1 className="mt-10 text-6xl lg:text-7xl font-black leading-tight tracking-tight text-slate-900 dark:text-white">
 
               Discover
 
@@ -69,7 +65,7 @@ export default function HeroSection() {
 
             {/* Description */}
 
-            <p className="mt-8 max-w-xl text-xl leading-10 text-slate-600">
+            <p className="mt-8 max-w-xl text-xl leading-10 text-slate-600 dark:text-slate-300">
 
               Compare colleges, predict admissions, explore placements,
               discover scholarships and make confident career decisions
@@ -93,8 +89,7 @@ export default function HeroSection() {
 
               <Link
                 href="/predictor"
-                className="rounded-xl border bg-white px-8 py-4 font-semibold shadow hover:bg-slate-50"
-              >
+                className="rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-8 py-4 font-semibold shadow hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-800 transition">
                 AI Predictor
               </Link>
 
@@ -104,7 +99,7 @@ export default function HeroSection() {
 
             <div className="mt-14">
 
-              <p className="mb-5 text-slate-500 font-medium">
+              <p className="mb-5 text-slate-500 dark:text-slate-400 font-medium">
 
                 Trusted by students aiming for top companies
 
@@ -125,8 +120,7 @@ export default function HeroSection() {
 
                   <div
                     key={company}
-                    className="rounded-xl border bg-white py-3 text-center font-medium shadow-sm transition hover:shadow-md"
-                  >
+                   className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white py-3 text-center font-medium shadow-sm transition hover:shadow-md">
                     {company}
                   </div>
 
@@ -170,11 +164,11 @@ export default function HeroSection() {
 
           {/* RIGHT COLUMN START */}
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
 
                  {/* ================= AI Recommendation ================= */}
 
-      <div className="bg-white rounded-[28px] shadow-xl border border-slate-100 p-7">
+      <div className="bg-white dark:bg-slate-900 rounded-[28px] shadow-xl border border-slate-100 dark:border-slate-700 p-7">
 
         <div className="flex items-center justify-between">
 
@@ -184,11 +178,11 @@ export default function HeroSection() {
               AI Recommendation
             </p>
 
-            <h2 className="text-4xl font-extrabold mt-3">
+            <h2 className="text-4xl font-extrabold mt-3 text-slate-900 dark:text-white">
               Best Match
             </h2>
 
-            <p className="text-slate-500 mt-3">
+            <p className="text-slate-500 dark:text-slate-400 mt-3">
               Based on placements, fees and ranking.
             </p>
 
@@ -204,8 +198,7 @@ export default function HeroSection() {
 
       {/* ================= College Card ================= */}
 
-      <div className="bg-white rounded-[34px] shadow-xl border border-slate-100 p-8">
-
+      <div className="bg-white dark:bg-slate-900 rounded-[34px] shadow-xl border border-slate-100 dark:border-slate-700 p-8">
         <div className="flex items-start gap-5">
 
           <div className="h-20 w-20 rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg">
@@ -216,14 +209,12 @@ export default function HeroSection() {
 
           <div>
 
-            <h2 className="text-4xl font-black text-slate-900">
-
+            <h2 className="text-4xl font-black text-slate-900 dark:text-white">
               COEP Technological University
 
             </h2>
 
-            <div className="flex items-center gap-2 mt-3 text-slate-500">
-
+            <div className="flex items-center gap-2 mt-3 text-slate-500 dark:text-slate-400">
               <MapPin size={18} />
 
               Pune, Maharashtra
@@ -270,7 +261,7 @@ export default function HeroSection() {
 
                {/* Students Card */}
 
-      <div className="bg-white rounded-[30px] shadow-xl border border-slate-100 p-7">
+      <div className="bg-white dark:bg-slate-900 rounded-[30px] shadow-xl border border-slate-100 dark:border-slate-700 p-7">
 
         <div className="flex items-center gap-3 mb-6">
 
@@ -286,7 +277,7 @@ export default function HeroSection() {
           12,500+
         </h2>
 
-        <p className="mt-6 text-slate-500 text-lg leading-8">
+        <p className="mt-6 text-slate-500 dark:text-slate-400 text-lg leading-8">
           Students placed in top companies
         </p>
 
@@ -294,7 +285,7 @@ export default function HeroSection() {
 
       {/* Recruiters Card */}
 
-      <div className="bg-white rounded-[30px] shadow-xl border border-slate-100 p-7">
+      <div className="bg-white dark:bg-slate-900 rounded-[30px] shadow-xl border border-slate-100 dark:border-slate-700 p-7">
 
         <div className="flex items-center gap-3 mb-6">
 
@@ -309,7 +300,7 @@ export default function HeroSection() {
 
         </div>
 
-        <div className="space-y-4">
+        <div className="flex flex-col gap-6">
 
           {[
             "Google",
@@ -322,21 +313,20 @@ export default function HeroSection() {
 
             <div
               key={company}
-              className="
-              flex
+            className="flex
               items-center
               justify-between
               rounded-xl
               border
-              border-slate-200
+              border-slate-200 dark:border-slate-700
               px-4
               py-3
-              hover:bg-slate-50
+              hover:bg-slate-50 dark:bg-slate-800
               transition
               "
             >
 
-              <span className="font-medium">
+              <span className="font-medium text-slate-900 dark:text-white">
                 {company}
               </span>
 
@@ -376,9 +366,9 @@ function Stat({
     <div
       className="
       rounded-2xl
-      bg-white
+      bg-white dark:bg-slate-900
       border
-      border-slate-200
+      border-slate-200 dark:border-slate-700
       p-5
       shadow-lg
       hover:shadow-xl
@@ -391,11 +381,12 @@ function Stat({
         {icon}
       </div>
 
-      <h3 className="text-3xl font-bold text-slate-900">
+      <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
+
         {value}
       </h3>
 
-      <p className="text-slate-500 mt-1">
+      <p className="text-slate-500 dark:text-slate-400 mt-1">
         {label}
       </p>
     </div>
@@ -414,15 +405,16 @@ function Card({
       className="
       rounded-2xl
       border
-      border-slate-200
-      bg-slate-50
+      border-slate-200 dark:border-slate-700
+      bg-slate-50 dark:bg-slate-800
       p-6
-      hover:bg-blue-50
+      hover:bg-blue-50 dark:hover:bg-slate-700
       transition-all
       duration-300
       "
     >
-      <p className="text-slate-500 text-sm">
+      <p className="text-slate-500 dark:text-slate-400 text-sm">
+        
         {title}
       </p>
 

@@ -20,7 +20,7 @@ export default function Placements() {
 
  key={company}
 
- className="bg-white p-10 rounded-3xl shadow"
+ className="bg-white dark:bg-slate-900 p-10 rounded-3xl shadow"
 
  >
 

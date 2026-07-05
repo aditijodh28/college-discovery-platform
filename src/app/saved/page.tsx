@@ -10,7 +10,7 @@ export default function Saved(){
 
  </h1>
 
- <div className="bg-white p-10 rounded-3xl shadow mt-10">
+ <div className="bg-white dark:bg-slate-900 p-10 rounded-3xl shadow mt-10">
 
  No saved colleges yet.
 

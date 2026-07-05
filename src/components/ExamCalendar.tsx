@@ -34,7 +34,7 @@ export default function ExamCalendar(){
 
  key={exam}
 
- className="bg-white p-8 rounded-3xl shadow"
+ className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow"
 
  >
 

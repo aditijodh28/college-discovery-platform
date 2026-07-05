@@ -38,7 +38,7 @@ export default function Dashboard() {
 
         <div className="flex gap-4 flex-wrap">
 
-          <button className="bg-white shadow-lg rounded-xl px-6 py-3 hover:scale-105 transition">
+          <button className="bg-white dark:bg-slate-900 shadow-lg rounded-xl px-6 py-3 hover:scale-105 transition">
             <Search className="inline mr-2" size={18} />
             Search
           </button>
@@ -56,7 +56,7 @@ export default function Dashboard() {
 
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 text-white p-10 mb-10 shadow-2xl">
 
-        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-white dark:bg-slate-900/10 blur-3xl" />
 
         <div className="relative z-10">
 
@@ -69,7 +69,7 @@ export default function Dashboard() {
             explore recruiters and build your career.
           </p>
 
-          <button className="bg-white text-blue-700 px-8 py-4 rounded-xl font-bold hover:scale-105 transition">
+          <button className="bg-white dark:bg-slate-900 text-blue-700 px-8 py-4 rounded-xl font-bold hover:scale-105 transition">
             Explore Colleges
           </button>
 
@@ -117,7 +117,7 @@ export default function Dashboard() {
 
         {/* Progress */}
 
-        <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl p-8">
+        <div className="lg:col-span-2 bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8">
 
           <h2 className="text-3xl font-bold mb-8">
             Performance Analytics
@@ -137,7 +137,7 @@ export default function Dashboard() {
 
         {/* Quick Actions */}
 
-        <div className="bg-white rounded-3xl shadow-xl p-8">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl p-8">
 
           <h2 className="text-3xl font-bold mb-6">
             Quick Actions
@@ -173,7 +173,7 @@ export default function Dashboard() {
 
         {/* Recruiters */}
 
-        <div className="bg-white rounded-3xl shadow-xl p-8">
+        <div className="bbg-white dark:bg-slate-900 g-white rounded-3xl shadow-xl p-8">
 
           <h2 className="text-3xl font-bold mb-6">
             Top Recruiters
@@ -206,7 +206,7 @@ export default function Dashboard() {
 
         {/* Cities */}
 
-        <div className="bg-white rounded-3xl shadow-xl p-8">
+        <div className="bg-white dark:bg-slate-900 g-white rounded-3xl shadow-xl p-8">
 
           <h2 className="text-3xl font-bold mb-6">
             Trending Cities
@@ -248,7 +248,7 @@ function StatCard({
   color,
 }: any) {
   return (
-    <div className="bg-white rounded-3xl shadow-xl p-8 hover:-translate-y-2 hover:shadow-2xl transition">
+    <div className="bg-white dark:bg-slate-900 bg-white rounded-3xl shadow-xl p-8 hover:-translate-y-2 hover:shadow-2xl transition">
 
       <div className="flex justify-between">
 

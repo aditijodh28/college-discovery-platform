@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import DarkModeButton from "../common/DarkModeButton"
-
+import DarkModeButton from "@/components/common/DarkModeButton";
 import {
   House,
   GraduationCap,
@@ -240,18 +239,16 @@ export default function Navbar() {
 
         {/* Right Side */}
 
-        <div
-          className="
-          flex
+        <div className="flex items-center gap-4">
+  <DarkModeButton />
 
-          items-center
-
-          gap-4
-          "
-        >
-          {/* Dark Mode */}
-
-          <DarkModeButton />
+  <button
+    className="lg:hidden"
+    onClick={() => setOpen(!open)}
+  >
+    {open ? <X /> : <Menu />}
+  </button>
+</div>
 
           {/* Mobile Menu */}
 
@@ -268,7 +265,7 @@ export default function Navbar() {
             {open ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-      </div>
+      
 
       {/* Mobile Menu */}
 

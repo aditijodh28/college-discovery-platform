@@ -56,19 +56,25 @@ export default function ComparePage() {
 
   return (
 
-    <main className="min-h-screen bg-slate-100 p-8">
+    <main className="min-h-screen
+bg-slate-100
+dark:bg-slate-950
+text-slate-900
+dark:text-white
+p-8
+transition-colors">
 
       {/* Header */}
 
       <div className="text-center mb-12">
 
-        <h1 className="text-5xl font-bold mb-4">
+        <h1 className="text-5xl font-bold mb-4 text-slate-900 dark:text-white">
 
           Compare Colleges
 
         </h1>
 
-        <p className="text-gray-500 text-lg">
+        <p className="text-slate-500 dark:text-slate-400 text-lg">
 
           Compare colleges side-by-side.
 
@@ -84,7 +90,21 @@ export default function ComparePage() {
 
           value={college1.id}
 
-          className="p-4 rounded-2xl border bg-white"
+          className="
+p-4
+rounded-2xl
+border
+border-slate-300
+dark:border-slate-700
+bg-white
+dark:bg-slate-900
+border
+border-slate-200
+dark:border-slate-700
+dark:bg-slate-900
+text-slate-900
+dark:text-white
+"
 
           onChange={(e) => {
 
@@ -377,6 +397,7 @@ function CollegeCard({
               gap-2
 
               bg-slate-100
+dark:bg-slate-800
 
               p-3
 
@@ -408,7 +429,7 @@ function CollegeCard({
 
         </h3>
 
-        <div className="bg-slate-200 h-4 rounded-full">
+        <div className="bg-slate-200 dark:bg-slate-700 h-4 rounded-full">
 
           <div
 
