@@ -52,8 +52,7 @@ export default function CollegesPage() {
 
   return (
 
-    <main className="min-h-screen bg-slate-100 p-10">
-
+    <main className="min-h-screen bg-slate-100 dark:bg-slate-950 transition-colors duration-300">
       <h1 className="text-5xl font-bold mb-10">
 
         🎓 College Explorer
@@ -89,8 +88,7 @@ export default function CollegesPage() {
 
           <div className="flex justify-between mb-8">
 
-            <h2 className="text-3xl font-bold">
-
+            <h2 className="text-3xl font-bold mb-8 text-slate-900 dark:text-white">
               Colleges
 
             </h2>

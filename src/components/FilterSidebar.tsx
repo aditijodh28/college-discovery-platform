@@ -34,7 +34,7 @@ export default function FilterSidebar({
   setCourse,
 }: Props) {
   return (
-    <div className="bg-white rounded-3xl shadow-lg p-6">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg p-6">
 
       <h2 className="text-2xl font-bold mb-6">
         🔍 Filters

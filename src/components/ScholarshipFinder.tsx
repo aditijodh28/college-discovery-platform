@@ -32,7 +32,7 @@ export default function ScholarshipFinder(){
 
  key={item}
 
- className="bg-white p-8 rounded-3xl shadow"
+ className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow"
 
  >
 

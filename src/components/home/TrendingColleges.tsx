@@ -8,9 +8,9 @@ export default function TrendingColleges() {
 
   return (
 
-    <section className="my-16">
+    <section className="my-16 px-6">
 
-      <h2 className="text-4xl font-bold mb-8">
+      <h2 className="text-4xl font-bold mb-8 text-slate-900 dark:text-white">
 
         🔥 Trending Colleges
 
@@ -22,7 +22,18 @@ export default function TrendingColleges() {
 
           <div
             key={college.id}
-            className="bg-white p-6 rounded-3xl shadow-lg hover:scale-105 transition"
+            className="
+bg-white
+dark:bg-slate-900
+border
+border-slate-200
+dark:border-slate-700
+p-6
+rounded-3xl
+shadow-lg
+hover:scale-105
+transition
+"
           >
 
             <h3 className="text-2xl font-bold">
@@ -31,19 +42,19 @@ export default function TrendingColleges() {
 
             </h3>
 
-            <p>
+            <p className="text-slate-600 dark:text-slate-400">
 
               📍 {college.location}
 
             </p>
 
-            <p>
+            <p className="text-slate-600 dark:text-slate-400">
 
               ⭐ {college.rating}
 
             </p>
 
-            <p>
+           <p className="text-slate-600 dark:text-slate-400">
 
               📊 {college.placementRate}
 

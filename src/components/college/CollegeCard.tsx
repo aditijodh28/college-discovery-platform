@@ -22,7 +22,7 @@ export default function CollegeCard({ college }: Props) {
   return (
     <div
       className="
-      bg-white
+      bg-white dark:bg-slate-900
       rounded-3xl
       shadow-lg
       p-8
@@ -30,7 +30,7 @@ export default function CollegeCard({ college }: Props) {
       hover:-translate-y-2
       transition-all
       duration-300
-      border
+      border border-slate-200 dark:border-slate-700
       "
     >
       {/* College Name */}
