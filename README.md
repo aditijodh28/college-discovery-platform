@@ -23,16 +23,6 @@ A web application to help students explore and discover colleges easily based on
 
 ---
 
-## 📸 Screenshots
-
-Add screenshots below:
-
-### Home Page
-![Home Page](./screenshot/home.png)
-
-
----
-
 ## 📂 Project Setup
 
 
