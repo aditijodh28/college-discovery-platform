@@ -1,6 +1,7 @@
 # 🎓 College Discovery Platform
 A web application to help students explore and discover colleges easily based on preferences like course, location, and ranking.
 
+
 ---
 
 ## 🚀 Features
